@@ -29,11 +29,15 @@
 grav = .3;
 hsp = 0;
 vsp = 0;
-jumpspeed_base = 5;
-movespeed_base = 4;
 
-jumpspeed = jumpspeed_base;
+movespeed_base = 4;
+jumpspeed = 5;
+jump = 0;
+jumpShort = false;
+
 movespeed = movespeed_base;
+
+yellow = 0;
 </string>
           </argument>
         </arguments>
@@ -59,17 +63,54 @@ movespeed = movespeed_base;
             <string>//Get player input
 key_right = keyboard_check(vk_right);
 key_left = -keyboard_check(vk_left);
-key_jump = keyboard_check_pressed(vk_space);
+key_jump_pressed = keyboard_check_pressed(vk_space);
+key_jump = keyboard_check(vk_space);
 
 //Calculate movement
 move = key_left + key_right;
 hsp = move * movespeed;
-if (vsp &lt; 10) vsp += grav;
 
-if (place_meeting(x,y+1,obj_wall)) {
-    vsp = key_jump * -jumpspeed;
+
+
+if (vsp &lt; 10) //Maximum fall speed
+    vsp += grav;
+
+//Jump code----------------------------
+if (place_meeting(x,y+1,obj_wall)) { //If player on ground
+    if (jump == 6) {
+        jump = 0;
+    }
+
+    if (key_jump_pressed &amp;&amp; jump == 0) {
+        jump = 1;
+    }
+    else if (jump &gt;= 1 &amp;&amp; jump &lt; 5) {
+        if (!key_jump) {
+            jumpShort = true;
+        }
+        jump++;
+    }
+    else if (jump == 5) {
+        if (!jumpShort) {
+           jump = 6;
+        }
+        vsp = -jumpspeed;
+        jumpShort = false;
+        jump = 0;
+    }
 }
 
+else if (jump == 6) {
+    if (key_jump) {
+        vsp -= yellow/10;
+    }
+    else {
+        jump = 0;
+    }
+}
+//-------------------------------------
+
+//Prevents wall overlap****************************************
 if (place_meeting(x + hsp,y,obj_wall)) {
     while(!place_meeting(x + sign(hsp),y,obj_wall)) {
         x += sign(hsp);
@@ -83,9 +124,12 @@ if (place_meeting(x,y + vsp,obj_wall)) {
     }
     vsp = 0;
 }
+//*************************************************************
 
+//Moves player--
 x += hsp;
 y += vsp;
+//--------------
 </string>
           </argument>
         </arguments>
