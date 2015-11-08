@@ -26,12 +26,14 @@
           <argument>
             <kind>1</kind>
             <string>//Initialize variables
-grav = 3;
+grav = 2; //Grav looks okay from .2 to 5
 hsp = 0;
 vsp = 0;
 
-movespeed = 15;
-jumpspeed = 10;
+movespeed = 20;
+//Sets jumpspeed to the right amount to rise n pixels
+n = 2 * 32;
+jumpspeed = sqrt(n * 2 * grav);
 
 jump = 0;
 jumpShort = false;
@@ -102,7 +104,8 @@ if (place_meeting(x,y+1,obj_wall)) { //If player on ground
 
 if (jump == 6) {
     if (key_jump &amp;&amp; vsp &lt; 0) {
-        vsp -= yellow/15;
+        //vsp -= yellow/15;
+        vsp -= 3*grav/4;
     }
     else {
         jump = 0;

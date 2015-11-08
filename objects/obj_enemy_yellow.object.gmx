@@ -29,7 +29,7 @@
 hsp = 0;
 vsp = 0;
 jumpspeed = 10;
-grav = 1;
+grav = 2;
 pause = 36;
 
 alarm[0] = pause;

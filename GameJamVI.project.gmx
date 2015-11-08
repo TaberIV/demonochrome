@@ -12,7 +12,6 @@
     <sprites name="player">
       <sprite>sprites\spr_player</sprite>
       <sprite>sprites\spr_player_walk</sprite>
-      <sprite>sprites\sprite7</sprite>
     </sprites>
     <sprite>sprites\spr_wall</sprite>
     <sprites name="enemies">
