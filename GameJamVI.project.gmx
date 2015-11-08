@@ -21,12 +21,16 @@
       <sprite>sprites\spr_yellow</sprite>
     </sprites>
   </sprites>
-  <backgrounds name="background"/>
+  <backgrounds name="background">
+    <background>background\background0</background>
+    <background>background\background1</background>
+    <background>background\background2</background>
+  </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_wall</object>
-    <object>objects\musicControl</object>
+    <object>objects\control</object>
     <objects name="enemies">
       <object>objects\obj_yellow</object>
       <object>objects\obj_enemy_yellow</object>
