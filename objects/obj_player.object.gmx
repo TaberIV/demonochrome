@@ -26,11 +26,11 @@
           <argument>
             <kind>1</kind>
             <string>//Initialize variables
-grav = 1;
+grav = 3;
 hsp = 0;
 vsp = 0;
 
-movespeed = 4;
+movespeed = 15;
 jumpspeed = 10;
 
 jump = 0;
@@ -71,7 +71,7 @@ hsp = move * movespeed;
 
 
 
-if (vsp &lt; 10) //Maximum fall speed
+if (vsp &lt; 50) //Maximum fall speed
     vsp += grav;
 
 //Jump code----------------------------
@@ -126,10 +126,18 @@ if (place_meeting(x,y + vsp,obj_wall)) {
 }
 //*************************************************************
 
-//Moves player--
+//Moves player and changes sprites------
+if (hsp == 0) {
+    sprite_index = spr_player;
+}
+else if(hsp != 0) {
+    sprite_index = spr_player_walk;
+    image_xscale = sign(hsp);
+}
+
+
 x += hsp;
 y += vsp;
-//--------------
 </string>
           </argument>
         </arguments>
