@@ -67,6 +67,8 @@ key_left = -keyboard_check(vk_left);
 key_jump_pressed = keyboard_check_pressed(vk_space);
 key_jump = keyboard_check(vk_space);
 
+key_shoot = keyboard_check(vk_control);
+
 //Calculate movement
 move = key_left + key_right;
 hsp = move * movespeed;
@@ -128,15 +130,26 @@ if (place_meeting(x,y + vsp,obj_wall)) {
 }
 //*************************************************************
 
-//Moves player and changes sprites------
-if (hsp == 0) {
-    sprite_index = spr_player;
-}
-else if(hsp != 0) {
-    sprite_index = spr_player_walk;
+//Handles sprites based on movement-----
+if (abs(hsp) &gt; 0) {
     image_xscale = sign(hsp);
 }
 
+if (place_meeting(x,y+1,obj_wall)) { //If on ground
+    if (hsp == 0) {
+        sprite_index = spr_player;
+    }
+    else if(hsp != 0) {
+        sprite_index = spr_player_walk;
+    }
+}
+else { //In air
+    if (vsp &lt; 0) {
+        sprite_index = spr_player
+    }
+
+}
+//--------------------------------------
 
 x += hsp;
 y += vsp;
