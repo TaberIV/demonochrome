@@ -28,6 +28,7 @@
     <object>objects\musicControl</object>
     <objects name="enemies">
       <object>objects\obj_yellow</object>
+      <object>objects\obj_enemy_yellow</object>
     </objects>
   </objects>
   <rooms name="rooms">
