@@ -102,7 +102,7 @@ if (place_meeting(x,y+1,obj_wall)) { //If player on ground
 
 if (jump == 6) {
     if (key_jump &amp;&amp; vsp &lt; 0) {
-        vsp -= yellow/50;
+        vsp -= yellow/15;
     }
     else {
         jump = 0;
