@@ -30,7 +30,9 @@ grav = 2; //Grav looks okay from .2 to 5
 hsp = 0;
 vsp = 0;
 
-movespeed = 20;
+run_speed = 20;
+air_speed = 15;
+movespeed = run_speed;
 //Sets jumpspeed to the right amount to rise n pixels
 height = 2 * 32;
 jumpspeed = sqrt(2 * height * grav) + 2;
@@ -120,6 +122,8 @@ if (can_act) {
     
     //Jump code**********************************
     if (place_meeting(x,y+1,obj_wall)) { //If player on ground
+        movespeed = run_speed;    
+    
         if (jump == 6) {
             jump = 0;
         }
@@ -143,11 +147,22 @@ if (can_act) {
             }
         }
     }
+    else {
+        if (movespeed &gt; air_speed) {
+            movespeed -= .5;
+        }
+    }
     
     if (jump == 6) {
         if (key_jump &amp;&amp; vsp &lt; 0) {
-            agrav = (grav - power(jumpspeed - 2, 2) / (2 * max_height)) * yellow
-            / (instance_number(obj_yellow) + instance_number(obj_enemy_yellow) + yellow);
+            numYellow = instance_number(obj_yellow) + instance_number(obj_enemy_yellow);
+            
+            agrav_min = (grav - power(jumpspeed - 2, 2) / (2 * min_height))
+             * (numYellow) / (numYellow + yellow);
+            agrav_here = (grav - power(jumpspeed - 2, 2) / (2 * max_height))
+             * yellow / (numYellow + yellow);
+             
+            agrav = agrav_here + agrav_min;
             vsp -= agrav;
         }
         else {

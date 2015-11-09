@@ -11,7 +11,8 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>with (obj_player) {
-    max_height = 32 * 3;
+    min_height = 32 * 2;
+    max_height = 32 * 4;
 }</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
