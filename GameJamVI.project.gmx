@@ -25,6 +25,9 @@
       <sprite>sprites\spr_proj_red</sprite>
       <sprite>sprites\spr_yellow</sprite>
     </sprites>
+    <sprite>sprites\spr_door</sprite>
+    <sprite>sprites\spr_latch</sprite>
+    <sprite>sprites\spr_button</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -40,8 +43,11 @@
       <object>objects\obj_enemy_yellow</object>
       <object>objects\obj_red</object>
     </objects>
-    <object>objects\obj_wall</object>
     <object>objects\control</object>
+    <object>objects\obj_wall</object>
+    <object>objects\obj_door</object>
+    <object>objects\obj_latch</object>
+    <object>objects\obj_button</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room3</room>
