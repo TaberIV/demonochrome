@@ -12,6 +12,9 @@
     <sprites name="player">
       <sprite>sprites\spr_player</sprite>
       <sprite>sprites\spr_player_walk</sprite>
+      <sprite>sprites\spr_player_jump</sprite>
+      <sprite>sprites\spr_player_fall</sprite>
+      <sprite>sprites\spr_player_rise</sprite>
       <sprite>sprites\spr_proj_player</sprite>
     </sprites>
     <sprite>sprites\spr_wall</sprite>
@@ -19,6 +22,7 @@
       <sprite>sprites\spr_blue</sprite>
       <sprite>sprites\spr_green</sprite>
       <sprite>sprites\spr_red</sprite>
+      <sprite>sprites\spr_proj_red</sprite>
       <sprite>sprites\spr_yellow</sprite>
     </sprites>
   </sprites>
@@ -30,14 +34,17 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_player</object>
-    <object>objects\obj_wall</object>
-    <object>objects\control</object>
+    <object>objects\obj_proj_player</object>
     <objects name="enemies">
       <object>objects\obj_yellow</object>
       <object>objects\obj_enemy_yellow</object>
+      <object>objects\obj_red</object>
     </objects>
+    <object>objects\obj_wall</object>
+    <object>objects\control</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room2</room>
     <room>rooms\room1</room>
   </rooms>
   <help>

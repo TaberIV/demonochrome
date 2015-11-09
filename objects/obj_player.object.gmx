@@ -38,7 +38,33 @@ jumpspeed = sqrt(n * 2 * grav);
 jump = 0;
 jumpShort = false;
 
+can_act = true;
+
 yellow = 0;
+red = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>can_act = true;
 </string>
           </argument>
         </arguments>
@@ -64,57 +90,79 @@ yellow = 0;
             <string>//Get player input
 key_right = keyboard_check(vk_right);
 key_left = -keyboard_check(vk_left);
+
 key_jump_pressed = keyboard_check_pressed(vk_space);
 key_jump = keyboard_check(vk_space);
 
 key_shoot = keyboard_check(vk_control);
 
-//Calculate movement
-move = key_left + key_right;
-hsp = move * movespeed;
+//Shoots Projectile-------------------------
+shoot = key_shoot &amp;&amp; can_act &amp;&amp; red &gt; 0 &amp;&amp; place_meeting(x,y+1,obj_wall) &amp;&amp; jump == 0;
+if(shoot) {
+    inst = instance_create(x + image_xscale * 50, 
+                           y - 25, obj_proj_player);
+    with (inst) {
+        sp = (obj_player.red - 1) * .5 + 5;
+        angle = pi / 6;
+        hsp = sp * obj_player.image_xscale * cos(angle);
+        vsp = -sp * sin(angle);
+        grav = .7;
+    }
+    can_act = false;
+    alarm[1] = 12;
+}
+//------------------------------------------
 
-
+//************************************************************************
+//Calculate movement******************************************************
+if (can_act) {//Move and jump code-----------------------------
+    move = key_left + key_right;
+    
+    //Jump code*****************************
+    if (place_meeting(x,y+1,obj_wall)) { //If player on ground
+        if (jump == 6) {
+            jump = 0;
+        }
+    
+        if (key_jump_pressed &amp;&amp; jump == 0) {
+            jump = 1;
+        }
+        else if (jump &gt;= 1 &amp;&amp; jump &lt; 5) {
+            if (!key_jump) {
+                jumpShort = true;
+            }
+            jump++;
+        }
+        else if (jump == 5) {
+            vsp = -jumpspeed;
+            jumpShort = false;
+            jump = 0;
+            
+            if (!jumpShort) {
+               jump = 6;
+            }
+        }
+    }
+    
+    if (jump == 6) {
+        if (key_jump &amp;&amp; vsp &lt; 0) {
+            vsp -= sqrt(yellow)/15;
+        }
+        else {
+            jump = 0;
+        }
+    }
+    //**************************************
+}
+else {
+    move = 0;
+}//-----------------------------------------------------------------
 
 if (vsp &lt; 50) //Maximum fall speed
     vsp += grav;
-
-//Jump code----------------------------
-if (place_meeting(x,y+1,obj_wall)) { //If player on ground
-    if (jump == 6) {
-        jump = 0;
-    }
-
-    if (key_jump_pressed &amp;&amp; jump == 0) {
-        jump = 1;
-    }
-    else if (jump &gt;= 1 &amp;&amp; jump &lt; 5) {
-        if (!key_jump) {
-            jumpShort = true;
-        }
-        jump++;
-    }
-    else if (jump == 5) {
-        vsp = -jumpspeed;
-        jumpShort = false;
-        jump = 0;
-        
-        if (!jumpShort) {
-           jump = 6;
-        }
-    }
-}
-
-if (jump == 6) {
-    if (key_jump &amp;&amp; vsp &lt; 0) {
-        vsp -= sqrt(yellow)/15;
-    }
-    else {
-        jump = 0;
-    }
-}
-//-------------------------------------
-
-//Prevents wall overlap****************************************
+hsp = move * movespeed;
+    
+//Prevents wall overlap************************************
 if (place_meeting(x + hsp,y,obj_wall)) {
     while(!place_meeting(x + sign(hsp),y,obj_wall)) {
         x += sign(hsp);
@@ -128,31 +176,41 @@ if (place_meeting(x,y + vsp,obj_wall)) {
     }
     vsp = 0;
 }
-//*************************************************************
+//*********************************************************
 
-//Handles sprites based on movement-----
+x += hsp;
+y += vsp;
+//************************************************************************
+//************************************************************************
+
+
+//Handles sprites based on movement------------------------
 if (abs(hsp) &gt; 0) {
     image_xscale = sign(hsp);
 }
 
 if (place_meeting(x,y+1,obj_wall)) { //If on ground
-    if (hsp == 0) {
-        sprite_index = spr_player;
+    if (jump = 0) {
+        if (hsp == 0) {
+            sprite_index = spr_player;
+        }
+        else if(hsp != 0) {
+            sprite_index = spr_player_walk;
+        }
     }
-    else if(hsp != 0) {
-        sprite_index = spr_player_walk;
+    else { 
+        prite_index = spr_player_jump
     }
 }
 else { //In air
     if (vsp &lt; 0) {
-        sprite_index = spr_player
+        sprite_index = spr_player_rise
     }
-
+    else {
+        sprite_index = spr_player_fall
+    }
 }
-//--------------------------------------
-
-x += hsp;
-y += vsp;
+//---------------------------------------------------------
 </string>
           </argument>
         </arguments>
