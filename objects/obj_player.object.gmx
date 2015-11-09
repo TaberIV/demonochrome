@@ -31,7 +31,7 @@ hsp = 0;
 vsp = 0;
 
 run_speed = 20;
-air_speed = 15;
+air_speed = 10;
 movespeed = run_speed;
 //Sets jumpspeed to the right amount to rise n pixels
 height = 2 * 32;
@@ -154,7 +154,7 @@ if (can_act) {
     }
     
     if (jump == 6) {
-        if (key_jump &amp;&amp; vsp &lt; 0) {
+        if (key_jump &amp;&amp; vsp &lt; -1) {
             numYellow = instance_number(obj_yellow) + instance_number(obj_enemy_yellow);
             
             agrav_min = (grav - power(jumpspeed - 2, 2) / (2 * min_height))

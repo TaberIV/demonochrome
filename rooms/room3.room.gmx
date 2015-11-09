@@ -147,7 +147,7 @@
     <instance objName="obj_wall" x="352" y="32" name="inst_9A45DCE1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="352" y="64" name="inst_2A26247F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_yellow" x="32" y="128" name="inst_DDF1D762" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_button" x="480" y="256" name="inst_0A9A3887" locked="0" code="numTargets = 3;&#xA;target_x = 288;&#xA;target_y = 32;&#xA;target_obj = obj_latch;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_button" x="480" y="256" name="inst_0A9A3887" locked="0" code="numTargets = 3;&#xA;target_x = 288;&#xA;target_y = 32;&#xA;target_obj = obj_latch;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="control" x="0" y="0" name="inst_D00AA716" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_yellow" x="256" y="32" name="inst_87F219DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_yellow" x="288" y="32" name="inst_84B3B50C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -158,6 +158,8 @@
     <instance objName="obj_enemy_yellow" x="608" y="192" name="inst_9E9920BA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_yellow" x="864" y="32" name="inst_6F01FE78" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_yellow" x="640" y="160" name="inst_EE007114" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_red" x="576" y="320" name="inst_8860CFD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemy_red" x="672" y="320" name="inst_4C5820F3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

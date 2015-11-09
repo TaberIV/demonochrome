@@ -15,6 +15,8 @@
       <sprite>sprites\spr_player_jump</sprite>
       <sprite>sprites\spr_player_fall</sprite>
       <sprite>sprites\spr_player_rise</sprite>
+      <sprite>sprites\spr_player_attack</sprite>
+      <sprite>sprites\spr_player_shoot</sprite>
       <sprite>sprites\spr_proj_player</sprite>
     </sprites>
     <sprite>sprites\spr_wall</sprite>
@@ -35,12 +37,18 @@
     <background>background\background2</background>
   </backgrounds>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\button_destroy.gml</script>
+  </scripts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_proj_player</object>
     <objects name="enemies">
       <object>objects\obj_yellow</object>
+      <object>objects\obj_enemy_red</object>
+      <object>objects\obj_proj_red</object>
       <object>objects\obj_enemy_yellow</object>
+      <object>objects\obj_enemy</object>
       <object>objects\obj_red</object>
     </objects>
     <object>objects\control</object>
@@ -50,8 +58,9 @@
     <object>objects\obj_button</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room1</room>
     <room>rooms\room3</room>
+    <room>rooms\room2</room>
+    <room>rooms\room1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
