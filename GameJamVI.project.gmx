@@ -19,7 +19,6 @@
       <sprite>sprites\spr_player_shoot</sprite>
       <sprite>sprites\spr_proj_player</sprite>
     </sprites>
-    <sprite>sprites\spr_wall</sprite>
     <sprites name="enemies">
       <sprite>sprites\spr_blue</sprite>
       <sprite>sprites\spr_green</sprite>
@@ -27,9 +26,13 @@
       <sprite>sprites\spr_proj_red</sprite>
       <sprite>sprites\spr_yellow</sprite>
     </sprites>
-    <sprite>sprites\spr_door</sprite>
-    <sprite>sprites\spr_latch</sprite>
-    <sprite>sprites\spr_button</sprite>
+    <sprite>sprites\spr_wall</sprite>
+    <sprites name="Objects">
+      <sprite>sprites\spr_door</sprite>
+      <sprite>sprites\spr_latch</sprite>
+      <sprite>sprites\spr_button</sprite>
+      <sprite>sprites\spr_button_pressed</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background0</background>
@@ -41,15 +44,16 @@
     <script>scripts\button_destroy.gml</script>
   </scripts>
   <objects name="objects">
+    <object>objects\obj_yellow</object>
+    <object>objects\obj_red</object>
     <object>objects\obj_player</object>
     <object>objects\obj_proj_player</object>
     <objects name="enemies">
-      <object>objects\obj_yellow</object>
+      <object>objects\obj_enemy_yellow</object>
+      <object>objects\obj_enemy_blue</object>
       <object>objects\obj_enemy_red</object>
       <object>objects\obj_proj_red</object>
-      <object>objects\obj_enemy_yellow</object>
       <object>objects\obj_enemy</object>
-      <object>objects\obj_red</object>
     </objects>
     <object>objects\control</object>
     <object>objects\obj_wall</object>
@@ -59,8 +63,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\room3</room>
-    <room>rooms\room2</room>
     <room>rooms\room1</room>
+    <room>rooms\room2</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

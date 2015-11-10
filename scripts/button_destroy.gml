@@ -3,3 +3,5 @@ for (i=0; i < numTargets; i++) {
         instance_destroy();
     }
 }
+
+sprite_index = spr_button_pressed;

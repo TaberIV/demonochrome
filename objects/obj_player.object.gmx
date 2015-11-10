@@ -41,9 +41,13 @@ jump = 0;
 jumpShort = false;
 
 can_act = true;
+shoot = false;
+shooting = false;
+shoot_time = true;
 
 yellow = 0;
 red = 0;
+blue = 0;
 </string>
           </argument>
         </arguments>
@@ -72,6 +76,29 @@ red = 0;
         </arguments>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>shoot_time = true;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -93,24 +120,52 @@ red = 0;
 key_right = keyboard_check(vk_right);
 key_left = -keyboard_check(vk_left);
 
-key_jump_pressed = keyboard_check_pressed(vk_space);
 key_jump = keyboard_check(vk_space);
+key_jump_pressed = keyboard_check_pressed(vk_space);
 
 key_shoot = keyboard_check(vk_control);
+key_shoot_pressed = keyboard_check_pressed(vk_control);
 
 //Shoots Projectile-------------------------
-shoot = key_shoot &amp;&amp; can_act &amp;&amp; red &gt; 0 &amp;&amp; place_meeting(x,y+1,obj_wall) &amp;&amp; jump == 0;
-if(shoot) {
-    inst = instance_create(x + image_xscale * 50, 
-                           y - 25, obj_proj_player);
+can_shoot = shoot_time &amp;&amp; (red &gt; 0 || min_shotspeed &gt; 0)
+        &amp;&amp; place_meeting(x,y+1,obj_wall) &amp;&amp; jump == 0;
+if (can_shoot &amp;&amp; (key_shoot_pressed || shooting)) {
+    can_act = false;
+    shoot = false;
+    shooting = key_shoot;    
+    
+    if (key_shoot_pressed) {
+        angle = pi/2;
+    }
+    else if (angle &gt; 0 &amp;&amp; shooting) {
+        angle -= pi/36;
+    }
+    else {
+        shoot = true;
+        shooting = false;
+    }
+    
+    draw_set_color(c_red);
+/*    draw_line(x + image_xscale * 50, y - 25, 
+    x + image_xscale * 50 + image_xscale * cos(angle) * 100, y - 25 + sin(angle) * 100); */
+    
+}        
+if (shoot) {
+    inst = instance_create(x + image_xscale * 50, y - 25, obj_proj_player);
     with (inst) {
-        sp = (obj_player.red - 1) * .5 + 5;
-        angle = pi / 6;
+        angle = obj_player.angle;
+        max_shotspeed = obj_player.max_shotspeed;
+        min_shotspeed = obj_player.min_shotspeed;
+        
+        sp = max_shotspeed * obj_player.red / (instance_number(obj_enemy_red) + obj_player.red)
+            + min_shotspeed * instance_number(obj_enemy_red) / (instance_number(obj_enemy_red) + obj_player.red);
         hsp = sp * obj_player.image_xscale * cos(angle);
         vsp = -sp * sin(angle);
         grav = .7;
     }
-    can_act = false;
+    shoot_time = false
+    shoot = false;
+    alarm[0] = 24;
     alarm[1] = 12;
 }
 //------------------------------------------
