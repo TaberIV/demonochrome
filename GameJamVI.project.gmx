@@ -18,6 +18,7 @@
       <sprite>sprites\spr_player_attack</sprite>
       <sprite>sprites\spr_player_shoot</sprite>
       <sprite>sprites\spr_proj_player</sprite>
+      <sprite>sprites\spr_proj_gauge</sprite>
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_blue</sprite>
@@ -60,6 +61,7 @@
     <object>objects\obj_door</object>
     <object>objects\obj_latch</object>
     <object>objects\obj_button</object>
+    <object>objects\obj_proj_gauge</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room3</room>

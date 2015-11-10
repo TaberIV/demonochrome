@@ -136,21 +136,24 @@ if (can_shoot &amp;&amp; (key_shoot_pressed || shooting)) {
     
     if (key_shoot_pressed) {
         angle = pi/2;
+        bar = instance_create(x + image_xscale * 50, y - 25, obj_proj_player);
     }
     else if (angle &gt; 0 &amp;&amp; shooting) {
         angle -= pi/36;
+        
     }
     else {
         shoot = true;
         shooting = false;
     }
+    with (bar) {
+        image_angle = radtodeg(obj_player.angle);
+    }
     
-    draw_set_color(c_red);
-/*    draw_line(x + image_xscale * 50, y - 25, 
-    x + image_xscale * 50 + image_xscale * cos(angle) * 100, y - 25 + sin(angle) * 100); */
     
 }        
 if (shoot) {
+    with (bar) {instance_destroy(); }
     inst = instance_create(x + image_xscale * 50, y - 25, obj_proj_player);
     with (inst) {
         angle = obj_player.angle;
@@ -159,6 +162,7 @@ if (shoot) {
         
         sp = max_shotspeed * obj_player.red / (instance_number(obj_enemy_red) + obj_player.red)
             + min_shotspeed * instance_number(obj_enemy_red) / (instance_number(obj_enemy_red) + obj_player.red);
+        show_debug_message(sp * obj_player.image_xscale * cos(angle));
         hsp = sp * obj_player.image_xscale * cos(angle);
         vsp = -sp * sin(angle);
         grav = .7;
