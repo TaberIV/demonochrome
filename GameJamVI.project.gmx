@@ -13,8 +13,8 @@
       <sprite>sprites\spr_player</sprite>
       <sprite>sprites\spr_player_walk</sprite>
       <sprite>sprites\spr_player_jump</sprite>
-      <sprite>sprites\spr_player_fall</sprite>
       <sprite>sprites\spr_player_rise</sprite>
+      <sprite>sprites\spr_player_fall</sprite>
       <sprite>sprites\spr_player_attack</sprite>
       <sprite>sprites\spr_player_shoot</sprite>
       <sprite>sprites\spr_proj_player</sprite>
@@ -63,8 +63,8 @@
     <object>objects\obj_proj_gauge</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room3</room>
     <room>rooms\room1</room>
+    <room>rooms\room3</room>
     <room>rooms\room2</room>
   </rooms>
   <help>
