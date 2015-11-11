@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Initialize variables
+            <string>count = 0;
+//Initialize variables
 grav = 2; //Grav looks okay from .2 to 5
 hsp = 0;
 vsp = 0;
@@ -135,6 +136,32 @@ else {
       </action>
     </event>
     <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/*if (place_meeting(x,y,obj_wall)) {
+    show_debug_message("x: " + string(x));
+    show_debug_message("hsp: " + string(hsp));
+    show_debug_message("y: " + string(y));
+    show_debug_message("vsp: " + string(vsp));
+}*/
+</string>
+          </argument>
+        </arguments>
+      </action>
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -302,19 +329,27 @@ else {
 
 vsp += grav;
 hsp = move * movespeed;
-    
+
 //Prevents wall overlap************************************
 if (place_meeting(x + hsp,y,obj_wall)) {
     while(!place_meeting(x + sign(hsp),y,obj_wall)) {
         x += sign(hsp);
     }
+    while (place_meeting(x,y,obj_wall)) {
+        show_debug_message("This message can't exist x");
+        x -= sign(hsp)
+    }
     hsp = 0;
-    x -= sign(image_xscale);
+    
 }
 
 if (place_meeting(x,y + vsp,obj_wall)) {
     while(!place_meeting(x,y + sign(vsp),obj_wall)) {
         y += sign(vsp);
+    }
+    while (place_meeting(x,y,obj_wall)) {
+        show_debug_message("This message can't exist y");
+        y -= sign(vsp)
     }
     vsp = 0;
 }

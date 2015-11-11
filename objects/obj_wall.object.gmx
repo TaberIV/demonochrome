@@ -25,15 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(spr_wall, 0, x, y)
+            <string>draw_sprite(sprite_index, 0, x, y)
 
 colorCollected = obj_player.yellow + obj_player.red + obj_player.blue;
 colorLeft = instance_number(obj_enemy_yellow) + instance_number(obj_enemy_red) + instance_number(obj_enemy_blue);
 alphaLevel = colorCollected / (colorLeft + colorCollected);
 
-draw_set_alpha(alphaLevel);
-draw_sprite(spr_wall2, 0, x, y);
-draw_set_alpha(1);
+if(sprite_index = spr_wall) {
+    draw_set_alpha(alphaLevel);
+    draw_sprite(spr_wall2, 0, x, y);
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>

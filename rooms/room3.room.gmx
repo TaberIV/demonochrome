@@ -15,6 +15,8 @@
     max_height = 32 * 5;
     min_shotspeed = 0;
     max_shotspeed = 15;
+    min_dashtime = 0;
+    max_dashtime = 12;
 }</code>
   <enableViews>-1</enableViews>
   <clearViewBackground>-1</clearViewBackground>
@@ -88,7 +90,7 @@
     <instance objName="obj_wall" x="960" y="352" name="inst_912D0B42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="992" y="352" name="inst_00E944D1" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="1024" y="352" name="inst_7AB5FC84" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_player" x="320" y="288" name="inst_5B980814" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_player" x="320" y="128" name="inst_5B980814" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="128" y="320" name="inst_09CB04A2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="128" y="288" name="inst_8829D6CD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_wall" x="128" y="256" name="inst_34523CFB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
