@@ -126,6 +126,9 @@ key_jump_pressed = keyboard_check_pressed(vk_space);
 key_shoot = keyboard_check(vk_control);
 key_shoot_pressed = keyboard_check_pressed(vk_control);
 
+key_dash = keyboard_check(vk_shift);
+key_dash_pressed = keyboard_check_pressed(vk_shift);
+
 //Shoots Projectile-------------------------
 can_shoot = shoot_time &amp;&amp; (red &gt; 0 || min_shotspeed &gt; 0)
         &amp;&amp; place_meeting(x,y+1,obj_wall) &amp;&amp; jump == 0;
@@ -136,10 +139,10 @@ if (can_shoot &amp;&amp; (key_shoot_pressed || shooting)) {
     
     if (key_shoot_pressed) {
         angle = pi/2;
-        bar = instance_create(x + image_xscale * 50, y - 25, obj_proj_player);
+        bar = instance_create(x + image_xscale * 50, y - 25, obj_proj_gauge);
     }
     else if (angle &gt; 0 &amp;&amp; shooting) {
-        angle -= pi/36;
+        angle -= pi/24;
         
     }
     else {
@@ -147,7 +150,8 @@ if (can_shoot &amp;&amp; (key_shoot_pressed || shooting)) {
         shooting = false;
     }
     with (bar) {
-        image_angle = radtodeg(obj_player.angle);
+        image_xscale = obj_player.image_xscale ;
+        image_angle = radtodeg(obj_player.image_xscale * obj_player.angle);
     }
     
     
@@ -158,25 +162,29 @@ if (shoot) {
     with (inst) {
         angle = obj_player.angle;
         max_shotspeed = obj_player.max_shotspeed;
-        min_shotspeed = obj_player.min_shotspeed;
+        min_shotspeed = obj_player.min_shotspeed + 3 ;
         
         sp = max_shotspeed * obj_player.red / (instance_number(obj_enemy_red) + obj_player.red)
             + min_shotspeed * instance_number(obj_enemy_red) / (instance_number(obj_enemy_red) + obj_player.red);
-        show_debug_message(sp * obj_player.image_xscale * cos(angle));
+
         hsp = sp * obj_player.image_xscale * cos(angle);
         vsp = -sp * sin(angle);
         grav = .7;
     }
     shoot_time = false
     shoot = false;
-    alarm[0] = 24;
+    alarm[0] = 36;
     alarm[1] = 12;
 }
 //------------------------------------------
 
 //************************************************************************
 //Calculate movement******************************************************
-if (can_act) {
+else if (can_act &amp;&amp; key_dash_pressed) {
+    
+}
+
+else if (can_act) {
     move = key_left + key_right;                                         
     
     //Jump code**********************************
@@ -218,7 +226,7 @@ if (can_act) {
             
             agrav_min = (grav - power(jumpspeed - 2, 2) / (2 * min_height))
              * (numYellow) / (numYellow + yellow);
-            agrav_here = (grav - power(jumpspeed - 2, 2) / (2 * max_height))
+            agrav_here = (grav - power(jumpspeed - 1, 2) / (2 * max_height))
              * yellow / (numYellow + yellow);
              
             agrav = agrav_here + agrav_min;

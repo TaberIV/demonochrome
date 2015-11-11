@@ -11,9 +11,9 @@
   <colour>12632256</colour>
   <showcolour>-1</showcolour>
   <code>with (obj_player) {
-    min_height = 32 * 3;
+    min_height = 32 * 2;
     max_height = 32 * 5;
-    min_shotspeed = 5;
+    min_shotspeed = 0;
     max_shotspeed = 15;
 }</code>
   <enableViews>-1</enableViews>

@@ -46,7 +46,6 @@
   </scripts>
   <objects name="objects">
     <object>objects\obj_yellow</object>
-    <object>objects\obj_red</object>
     <object>objects\obj_player</object>
     <object>objects\obj_proj_player</object>
     <objects name="enemies">
