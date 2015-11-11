@@ -34,7 +34,7 @@
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="8" enumb="72">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -51,8 +51,21 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background_x[0] = view_xview/2;
-background_x[1] = view_xview/4;
+            <string>mainBackground_x = view_xview/2;
+middleground_x = view_xview/4;
+
+colorCollected = obj_player.yellow + obj_player.red + obj_player.blue;
+colorLeft = instance_number(obj_enemy_yellow) + instance_number(obj_enemy_red) + instance_number(obj_enemy_blue);
+alphaLevel = colorCollected / (colorLeft + colorCollected);
+
+draw_background(mainBackground, mainBackground_x, view_yview)
+draw_set_alpha(alphaLevel);
+draw_background(mainBackground2, mainBackground_x, view_yview)
+draw_set_alpha(1);
+draw_background(middleground, middleground_x, 400);
+draw_set_alpha(alphaLevel);
+draw_background(middleground2, middleground_x, 400);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>
