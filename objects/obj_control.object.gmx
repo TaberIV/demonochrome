@@ -26,6 +26,13 @@
           <argument>
             <kind>1</kind>
             <string>player_lives = 3;
+
+if (room == room4) {
+    tutorial = true;
+}
+else {
+    tutorial = false;
+}
 </string>
           </argument>
         </arguments>
@@ -46,7 +53,7 @@
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>musicStart</sound>
+            <sound>-100</sound>
           </argument>
         </arguments>
       </action>
@@ -80,7 +87,7 @@
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>musicLoop</sound>
+            <sound>-100</sound>
           </argument>
         </arguments>
       </action>
@@ -114,7 +121,7 @@
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>musicStart</sound>
+            <sound>-100</sound>
           </argument>
           <argument>
             <kind>3</kind>
@@ -168,7 +175,7 @@
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>musicStart</sound>
+            <sound>-100</sound>
           </argument>
         </arguments>
       </action>
@@ -202,7 +209,7 @@
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>musicLoop</sound>
+            <sound>-100</sound>
           </argument>
         </arguments>
       </action>
@@ -236,32 +243,11 @@
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>musicLoop</sound>
+            <sound>-100</sound>
           </argument>
           <argument>
             <kind>3</kind>
             <string>1</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>show_debug_message("Loop started");
-</string>
           </argument>
         </arguments>
       </action>
@@ -383,6 +369,8 @@ draw_set_alpha(1);*/
             <kind>1</kind>
             <string>if (player_lives &gt; 1) {
     with (obj_player) {
+        safe_x = start_x;
+        safe_y = safe_y;
         player_death();
     }
 }

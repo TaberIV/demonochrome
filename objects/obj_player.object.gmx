@@ -28,6 +28,9 @@
             <string>//Initialize variables
 start_x = x;
 start_y = y;
+safe_x = x;
+safe_y = y
+
 
 grav = 2; //Grav looks okay from .2 to 5
 hsp = 0;
@@ -200,6 +203,30 @@ if (place_meeting(x,y,obj_wall)) {
             count++;
         }
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (place_meeting(x,y+1,obj_wall)) {
+    safe_x = x;
+    safe_y = y
 }
 </string>
           </argument>

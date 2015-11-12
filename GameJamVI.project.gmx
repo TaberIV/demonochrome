@@ -49,6 +49,9 @@
     <script>scripts\player_death.gml</script>
     <script>scripts\button.gml</script>
   </scripts>
+  <fonts name="fonts">
+    <font>fonts\tutFont</font>
+  </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_yellow</object>
