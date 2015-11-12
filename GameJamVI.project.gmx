@@ -11,6 +11,8 @@
   <sprites name="sprites">
     <sprites name="player">
       <sprite>sprites\spr_player</sprite>
+      <sprite>sprites\spr_player_lives</sprite>
+      <sprite>sprites\spr_player_lives2</sprite>
       <sprite>sprites\spr_player_walk</sprite>
       <sprite>sprites\spr_player_dash</sprite>
       <sprite>sprites\spr_player_jump</sprite>
@@ -23,7 +25,6 @@
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_blue</sprite>
-      <sprite>sprites\spr_green</sprite>
       <sprite>sprites\spr_red</sprite>
       <sprite>sprites\spr_proj_red</sprite>
       <sprite>sprites\spr_yellow</sprite>
@@ -45,11 +46,12 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\button_destroy.gml</script>
+    <script>scripts\player_death.gml</script>
+    <script>scripts\button.gml</script>
   </scripts>
   <objects name="objects">
-    <object>objects\obj_yellow</object>
     <object>objects\obj_player</object>
+    <object>objects\obj_yellow</object>
     <object>objects\obj_proj_player</object>
     <objects name="enemies">
       <object>objects\obj_enemy_yellow</object>
@@ -58,13 +60,17 @@
       <object>objects\obj_proj_red</object>
       <object>objects\obj_enemy</object>
     </objects>
-    <object>objects\control</object>
+    <object>objects\obj_control</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_latch</object>
     <object>objects\obj_button</object>
     <object>objects\obj_proj_gauge</object>
+    <object>objects\obj_lift</object>
+    <object>objects\obj_lookout</object>
+    <object>objects\obj_camera</object>
   </objects>
   <rooms name="rooms">
+    <room>rooms\room4</room>
     <room>rooms\room3</room>
     <room>rooms\room1</room>
   </rooms>

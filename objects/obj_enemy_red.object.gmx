@@ -30,7 +30,7 @@ vsp = 0;
 grav = 2;
 pause = 36;
 
-alarm[0] = pause;
+alarm[0] = pause * (random(1) + 1);
 </string>
           </argument>
         </arguments>
@@ -90,7 +90,7 @@ inst = instance_create(x, y, obj_proj_red);
     can_act = false;
 //------------------------------------------
 
-alarm[0] = pause;
+alarm[0] = pause * (random(1) + 1);
 </string>
           </argument>
         </arguments>

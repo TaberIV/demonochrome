@@ -32,7 +32,7 @@ jumpspeed = 15;
 grav = 1.5;
 pause = 36;
 
-alarm[0] = pause;
+alarm[0] = pause * (random(1.25) + .75);
 </string>
           </argument>
         </arguments>
@@ -80,9 +80,10 @@ alarm[0] = pause;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>vsp = -jumpspeed;
+            <string>image_xscale *= sign(random(1) - .5);
+vsp = -jumpspeed;
 
-alarm[0] = pause;
+alarm[0] = pause * (random(.75) + .75);
 </string>
           </argument>
         </arguments>
@@ -106,7 +107,7 @@ alarm[0] = pause;
           <argument>
             <kind>1</kind>
             <string>if(!place_meeting(x,y+1,obj_wall)) {
-    hsp = airspeed;
+    hsp = airspeed * image_xscale;
 }
 else {
     hsp = 0;
@@ -120,7 +121,7 @@ if (place_meeting(x + hsp,y,obj_wall)) {
         x += sign(hsp);
     }
     hsp = 0;
-    airspeed *= -1;
+    image_xscale *= -1;
 }
 
 if (place_meeting(x,y + vsp,obj_wall)) {

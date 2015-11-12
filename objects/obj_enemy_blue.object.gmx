@@ -33,7 +33,7 @@ grav = 2;
 pause = 48;
 dashtime = 12;
 
-alarm[0] = pause;
+alarm[0] = pause * (random(1.25) + .75);
 </string>
           </argument>
         </arguments>
@@ -83,11 +83,11 @@ alarm[0] = pause;
             <kind>1</kind>
             <string>if (hsp == walkspeed) {
     hsp = dashspeed;
-    alarm[0] = dashtime;
+    alarm[0] = dashtime * (random(.5) + .75);
 }
 else {
     hsp = walkspeed;
-    alarm[0] = pause;
+    alarm[0] = pause * (random(.75) + .75);
 }
 </string>
           </argument>

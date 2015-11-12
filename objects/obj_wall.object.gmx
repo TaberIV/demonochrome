@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite(sprite_index, 0, x, y)
+            <string>draw_sprite_ext(sprite_index, 0, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
 
 colorCollected = obj_player.yellow + obj_player.red + obj_player.blue;
 colorLeft = instance_number(obj_enemy_yellow) + instance_number(obj_enemy_red) + instance_number(obj_enemy_blue);

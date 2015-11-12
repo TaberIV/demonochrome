@@ -25,8 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>count = 0;
-//Initialize variables
+            <string>//Initialize variables
+start_x = x;
+start_y = y;
+
 grav = 2; //Grav looks okay from .2 to 5
 hsp = 0;
 vsp = 0;
@@ -35,7 +37,7 @@ run_speed = 20;
 air_speed = 10;
 movespeed = run_speed;
 
-dashspeed = 32;
+dashspeed = 64;
 dashing = false;
 dash_pause = 24;
 dash_timer = true;
@@ -50,6 +52,8 @@ can_act = true;
 shoot = false;
 shooting = false;
 shoot_time = true;
+
+lift = false;
 
 yellow = 0;
 red = 0;
@@ -135,7 +139,7 @@ else {
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -152,16 +156,57 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*if (place_meeting(x,y,obj_wall)) {
-    show_debug_message("x: " + string(x));
-    show_debug_message("hsp: " + string(hsp));
-    show_debug_message("y: " + string(y));
-    show_debug_message("vsp: " + string(vsp));
-}*/
+            <string>if (lift &amp;&amp; jump &lt; 6 &amp;&amp; place_meeting(x,y+10,obj_lift)) {
+    while (!place_meeting(x,y + 1,obj_lift)) {
+        y++;
+    }
+}
 </string>
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>//Hack ass soloution to annoying jump collision problecms!!!!!!
+if (place_meeting(x,y,obj_wall)) {
+    count = 1;
+    while(place_meeting(x,y,obj_wall)) {
+        if (!place_meeting(x + count,y,obj_wall)) {
+            x += count;
+        }
+        else if (!place_meeting(x,y + count,obj_wall)) {
+            y +=count;
+        }
+        else if (!place_meeting(x + count,y + count,obj_wall)) {
+            x += count;
+            y +=count;
+        }
+        count *= -1;
+        if(abs(count) == count) {
+            count++;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -188,6 +233,8 @@ key_jump_pressed = keyboard_check_pressed(vk_space);
 key_shoot = keyboard_check(vk_control);
 key_shoot_pressed = keyboard_check_pressed(vk_control);
 
+min_dashtime = min_dash / dashspeed;
+max_dashtime = max_dash / dashspeed;
 key_dash = keyboard_check(vk_shift);
 key_dash_pressed = keyboard_check_pressed(vk_shift);
 can_dash = dash_timer &amp;&amp; (blue &gt; 0 || min_dashtime &gt; 0)
@@ -207,14 +254,13 @@ if (can_shoot &amp;&amp; (key_shoot_pressed || shooting)) {
     }
     else if (angle &gt; 0 &amp;&amp; shooting) {
         angle -= pi/24;
-        
     }
     else {
         shoot = true;
         shooting = false;
     }
     with (bar) {
-        image_xscale = obj_player.image_xscale ;
+        image_xscale = obj_player.image_xscale;
         image_angle = radtodeg(obj_player.image_xscale * obj_player.angle);
     }
     
@@ -246,7 +292,7 @@ if (shoot) {
 //Calculate movement******************************************************
 else if (can_act &amp;&amp; key_dash_pressed &amp;&amp; can_dash || dashing) {
     dashing = key_dash;
-    
+        
     dashtime = min_dashtime * instance_number(obj_enemy_blue) / (instance_number(obj_enemy_blue) + blue)
             + max_dashtime * blue / (instance_number(obj_enemy_blue) + blue);
     
@@ -335,10 +381,6 @@ if (place_meeting(x + hsp,y,obj_wall)) {
     while(!place_meeting(x + sign(hsp),y,obj_wall)) {
         x += sign(hsp);
     }
-    while (place_meeting(x,y,obj_wall)) {
-        show_debug_message("This message can't exist x");
-        x -= sign(hsp)
-    }
     hsp = 0;
     
 }
@@ -346,10 +388,6 @@ if (place_meeting(x + hsp,y,obj_wall)) {
 if (place_meeting(x,y + vsp,obj_wall)) {
     while(!place_meeting(x,y + sign(vsp),obj_wall)) {
         y += sign(vsp);
-    }
-    while (place_meeting(x,y,obj_wall)) {
-        show_debug_message("This message can't exist y");
-        y -= sign(vsp)
     }
     vsp = 0;
 }
@@ -391,6 +429,29 @@ if (dashing) {
     sprite_index = spr_player_dash;
 }
 //---------------------------------------------------------
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_lift">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>lift = true;
 </string>
           </argument>
         </arguments>
