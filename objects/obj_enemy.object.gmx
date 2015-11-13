@@ -8,6 +8,52 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (place_meeting(x,y,obj_player) || place_meeting(x,y,obj_player_attack)) {
+    if (place_meeting(x,y,obj_player_attack) || obj_player.dashing) {
+        instance_destroy();
+    }
+    else if (!obj_player.knocked) {
+        global.hit_x = x;
+        global.hit_y = y;
+        with (obj_player) {
+            knocked = true;
+            jump = 0;
+            attack = 0;
+            shooting = false;
+            dashing = false;
+            if (global.hit_x &gt; x) {
+                image_xscale = 1;
+            }
+            else if (global.hit_x &lt; x) {
+                image_xscale = -1;
+            }
+            hsp = (-image_xscale * 15);
+            vsp = -15;
+        }
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_proj_player">
       <action>
         <libid>1</libid>
@@ -26,48 +72,6 @@
           <argument>
             <kind>1</kind>
             <string>instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_player">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (place_meeting(x,y,obj_player_attack) &amp;&amp; !obj_player.dashing) {
-    instance_destroy();
-}
-else {
-    global.hit_x = x;
-    global.hit_y = y;
-    global.hit_hsp = hsp;
-    with (obj_player) {
-        jump = 0;
-        attack = 0;
-        shooting = false;
-        dashing = false;
-        if (global.hit_x != x) {
-            image_xscale = sign(global.hit_x - x);
-        }
-        hsp = 0;
-        hsp -= image_xscale * 25 +(abs(global.hit_hsp));
-        vsp = -10;
-    }
-}
 </string>
           </argument>
         </arguments>

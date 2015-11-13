@@ -2,8 +2,8 @@
 <object>
   <spriteName>spr_player_attackBox</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
-  <depth>0</depth>
+  <visible>-1</visible>
+  <depth>-11</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,8 +25,13 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = obj_player.x;
+            <string>image_xscale = obj_player.image_xscale;
+x = obj_player.x;
 y = obj_player.y;
+
+if (obj_player.attack = 0 || !place_meeting(x,y+1,obj_wall)) {
+    instance_destroy();
+}
 </string>
           </argument>
         </arguments>

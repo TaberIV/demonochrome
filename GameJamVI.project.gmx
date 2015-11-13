@@ -62,16 +62,17 @@
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <object>objects\obj_player_attack</object>
     <object>objects\obj_control</object>
     <object>objects\obj_control_music</object>
     <object>objects\obj_tut_control</object>
     <object>objects\obj_yellow</object>
     <objects name="enemies">
+      <object>objects\obj_enemy</object>
       <object>objects\obj_enemy_yellow</object>
       <object>objects\obj_enemy_blue</object>
       <object>objects\obj_enemy_red</object>
       <object>objects\obj_proj_red</object>
-      <object>objects\obj_enemy</object>
     </objects>
     <object>objects\obj_wall</object>
     <object>objects\obj_latch</object>
@@ -86,7 +87,6 @@
     <object>objects\obj_proj_player</object>
     <object>objects\obj_button_play</object>
     <object>objects\obj_arrow</object>
-    <object>objects\obj_player_attack</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\menu</room>
