@@ -48,10 +48,26 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//if (hitbox)
+            <string>if (place_meeting(x,y,obj_player_attack) &amp;&amp; !obj_player.dashing) {
     instance_destroy();
-//else
-    //with (obj_player) damage;
+}
+else {
+    global.hit_x = x;
+    global.hit_y = y;
+    global.hit_hsp = hsp;
+    with (obj_player) {
+        jump = 0;
+        attack = 0;
+        shooting = false;
+        dashing = false;
+        if (global.hit_x != x) {
+            image_xscale = sign(global.hit_x - x);
+        }
+        hsp = 0;
+        hsp -= image_xscale * 25 +(abs(global.hit_hsp));
+        vsp = -10;
+    }
+}
 </string>
           </argument>
         </arguments>

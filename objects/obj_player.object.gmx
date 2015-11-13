@@ -49,6 +49,7 @@ jumpspeed = sqrt(2 * height * grav) + 2;
 
 jump = 0;
 jumpShort = false;
+attack = 0;
 
 can_act = true;
 shoot = false;
@@ -160,6 +161,7 @@ else {
             <kind>1</kind>
             <string>if (lift &amp;&amp; (jump &lt; 6 || vsp &gt; 0) &amp;&amp; place_meeting(x,y+10,obj_lift)) {
     while (!place_meeting(x,y + 1,obj_lift)) {
+        vsp = 0;
         y++;
     }
 }
@@ -229,8 +231,11 @@ if (place_meeting(x,y,obj_wall)) {
 key_right = keyboard_check(vk_right);
 key_left = -keyboard_check(vk_left);
 
-key_jump = keyboard_check(vk_space);
-key_jump_pressed = keyboard_check_pressed(vk_space);
+key_jump = keyboard_check(vk_up);
+key_jump_pressed = keyboard_check_pressed(vk_up);
+
+key_attack = keyboard_check(vk_space);
+key_attack_pressed = keyboard_check_pressed(vk_space);
 
 key_shoot = keyboard_check(vk_control);
 key_shoot_pressed = keyboard_check_pressed(vk_control);
@@ -312,6 +317,23 @@ else if (can_act &amp;&amp; key_dash_pressed &amp;&amp; can_dash || dashing) {
         alarm[2] = dash_pause;
         can_dash = false;
         dash_timer = false;
+    }
+}
+
+else if (can_act &amp;&amp; key_attack_pressed || attack &gt; 0) {
+    can_act = false;
+    move = 0;
+    
+    if (attack == 0) {
+        instance_create(x,y, obj_player_attack)
+    }
+    attack++;
+    if (attack &gt;= 5) {
+        with (obj_player_attack) {
+            instance_destroy();
+            can_act = true;
+            attack = 0;
+        }
     }
 }
 
@@ -412,11 +434,14 @@ if (abs(hsp) &gt; 0) {
 
 if (place_meeting(x,y+1,obj_wall)) { //If on ground
     if (jump = 0) {
-        if (hsp == 0) {
+        if (hsp == 0 &amp;&amp; !(attack &gt; 0)) {
             sprite_index = spr_player;
         }
         else if(hsp != 0) {
             sprite_index = spr_player_walk;
+        }
+        else if (attack &gt; 0) {
+            sprite_index = spr_player_attack;
         }
     }
     else { 
@@ -484,8 +509,10 @@ if (dashing) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>safe_x = instance_nearest(x, y, obj_checkpoint).x;
-safe_y = instance_nearest(x, y, obj_checkpoint).y;
+            <string>if (place_meeting(x,y + 1,obj_wall)) {
+    safe_x = instance_nearest(x, y, obj_checkpoint).x;
+    safe_y = instance_nearest(x, y, obj_checkpoint).y;
+}
 </string>
           </argument>
         </arguments>

@@ -13,11 +13,12 @@
     <sprites name="player">
       <sprite>sprites\spr_player</sprite>
       <sprite>sprites\spr_player_walk</sprite>
+      <sprite>sprites\spr_player_attack</sprite>
+      <sprite>sprites\spr_player_attackBox</sprite>
       <sprite>sprites\spr_player_dash</sprite>
       <sprite>sprites\spr_player_jump</sprite>
       <sprite>sprites\spr_player_rise</sprite>
       <sprite>sprites\spr_player_fall</sprite>
-      <sprite>sprites\spr_player_attack</sprite>
       <sprite>sprites\spr_player_shoot</sprite>
       <sprite>sprites\spr_proj_player</sprite>
       <sprite>sprites\spr_proj_gauge</sprite>
@@ -39,6 +40,7 @@
       <sprite>sprites\spr_button</sprite>
       <sprite>sprites\spr_button_pressed</sprite>
     </sprites>
+    <sprite>sprites\spr_arrow</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkg_sky</background>
@@ -83,6 +85,8 @@
     <object>objects\obj_player_end</object>
     <object>objects\obj_proj_player</object>
     <object>objects\obj_button_play</object>
+    <object>objects\obj_arrow</object>
+    <object>objects\obj_player_attack</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\menu</room>
