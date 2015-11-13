@@ -9,10 +9,9 @@
     <sound>sound\musicLoop</sound>
   </sounds>
   <sprites name="sprites">
+    <sprite>sprites\spr_button_play</sprite>
     <sprites name="player">
       <sprite>sprites\spr_player</sprite>
-      <sprite>sprites\spr_player_lives</sprite>
-      <sprite>sprites\spr_player_lives2</sprite>
       <sprite>sprites\spr_player_walk</sprite>
       <sprite>sprites\spr_player_dash</sprite>
       <sprite>sprites\spr_player_jump</sprite>
@@ -24,6 +23,8 @@
       <sprite>sprites\spr_proj_gauge</sprite>
       <sprite>sprites\spr_player_placeholder</sprite>
       <sprite>sprites\spr_player_walk0</sprite>
+      <sprite>sprites\spr_player_lives</sprite>
+      <sprite>sprites\spr_player_lives2</sprite>
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_blue</sprite>
@@ -46,19 +47,23 @@
     <background>background\bkg_mountain_black</background>
     <background>background\bkg_mountain2</background>
     <background>background\bkg_mountain2_black</background>
+    <background>background\bkg_menu</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\player_death.gml</script>
     <script>scripts\button.gml</script>
+    <script>scripts\endLevel.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_tut</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
+    <object>objects\obj_control</object>
+    <object>objects\obj_control_music</object>
+    <object>objects\obj_tut_control</object>
     <object>objects\obj_yellow</object>
-    <object>objects\obj_proj_player</object>
     <objects name="enemies">
       <object>objects\obj_enemy_yellow</object>
       <object>objects\obj_enemy_blue</object>
@@ -66,7 +71,6 @@
       <object>objects\obj_proj_red</object>
       <object>objects\obj_enemy</object>
     </objects>
-    <object>objects\obj_control</object>
     <object>objects\obj_wall</object>
     <object>objects\obj_latch</object>
     <object>objects\obj_button</object>
@@ -75,11 +79,14 @@
     <object>objects\obj_lookout</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_checkpoint</object>
+    <object>objects\obj_end</object>
+    <object>objects\obj_player_end</object>
+    <object>objects\obj_proj_player</object>
+    <object>objects\obj_button_play</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room4</room>
-    <room>rooms\room3</room>
-    <room>rooms\room1</room>
+    <room>rooms\menu</room>
+    <room>rooms\lvl1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

@@ -158,7 +158,7 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (lift &amp;&amp; jump &lt; 6 &amp;&amp; place_meeting(x,y+10,obj_lift)) {
+            <string>if (lift &amp;&amp; (jump &lt; 6 || vsp &gt; 0) &amp;&amp; place_meeting(x,y+10,obj_lift)) {
     while (!place_meeting(x,y + 1,obj_lift)) {
         y++;
     }
@@ -311,6 +311,7 @@ else if (can_act &amp;&amp; key_dash_pressed &amp;&amp; can_dash || dashing) {
     else {
         alarm[2] = dash_pause;
         can_dash = false;
+        dash_timer = false;
     }
 }
 
@@ -326,18 +327,21 @@ else if (can_act) {
         }
     
         if (key_jump_pressed &amp;&amp; jump == 0) {
-            jump = 1;
+            jump = 5;
+            hsp = 0;
         }
         else if (jump &gt;= 1 &amp;&amp; jump &lt; 5) {
             if (!key_jump) {
                 jumpShort = true;
             }
             jump++;
+            hsp = 0;
         }
-        else if (jump == 5) {
+        if (jump == 5) {
             vsp = -jumpspeed;
             jumpShort = false;
             jump = 0;
+            hsp = 0;
             
             if (!jumpShort) {
                jump = 6;
@@ -431,6 +435,33 @@ if (dashing) {
     sprite_index = spr_player_dash;
 }
 //---------------------------------------------------------
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_end">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (distance_to_point(obj_end.x, obj_end.y) &lt; sqrt(sqr(hsp) + sqr(vsp))) {
+        instance_create(obj_end.x, obj_end.y,obj_player_end) {
+        instance_destroy();
+    }
+}
 </string>
           </argument>
         </arguments>

@@ -5,10 +5,10 @@
   <visible>0</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>obj_checkpoint</parentName>
+  <parentName>obj_lookout</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,20 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if(place_meeting(x, y,obj_player)) {
-    with (obj_camera) {
-        freeCam = true;
-    }
-}
-else {
-    with (obj_camera) {
-    look_x = obj_lookout.look_x;
-    look_y = obj_lookout.look_y;
-        if (x == look_x &amp;&amp; x == obj_lookout.look_y) {
-            freeCam = false;
-        }
-    }
-}
+            <string>look_x = x;
+look_y = y;
 </string>
           </argument>
         </arguments>
