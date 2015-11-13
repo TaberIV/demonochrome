@@ -111,20 +111,23 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (abs(hsp) &lt; abs(walkspeed)) {
+            <string>if (hsp &lt; walkspeed) {
     hsp = walkspeed;
 }
 
 vsp += grav;
 
+if (place_meeting(x + hsp,y,obj_wall) || !place_meeting(x + hsp, y + 1, obj_wall)) {
+    
+}
+
 //Prevents wall overlap****************************************
 if (place_meeting(x + hsp,y,obj_wall)) {
-    while(!place_meeting(x + sign(hsp),y,obj_wall)) {
-        x += sign(hsp);
+    while(!place_meeting(x + image_xscale * hsp,y,obj_wall) ) {
+        x += image_xscale;
     }
+    image_xscale *= -1;
     hsp = 0;
-    dashspeed *= -1;
-    walkspeed *= -1;
 }
 
 if (place_meeting(x,y + vsp,obj_wall)) {
@@ -135,7 +138,7 @@ if (place_meeting(x,y + vsp,obj_wall)) {
 }
 //*************************************************************
 
-x += hsp;
+x += hsp * image_xscale;
 y += vsp;
 </string>
           </argument>

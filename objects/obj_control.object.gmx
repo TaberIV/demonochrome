@@ -26,12 +26,21 @@
           <argument>
             <kind>1</kind>
             <string>player_lives = 3;
+tutText = "";
+tutText_hold = false;
+
+text_fadespeed = 1/24.0;
+text_alpha = 0;
 
 if (room == room4) {
-    tutorial = true;
+    tutText = "Use arrow keys to move";
+    text_x = 704;
+    text_y = 144;
+    tutText_hold = true;
 }
 else {
-    tutorial = false;
+    tutText = "";
+    tutText_hold = false;
 }
 </string>
           </argument>
@@ -53,7 +62,7 @@ else {
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>-100</sound>
+            <sound>musicStart</sound>
           </argument>
         </arguments>
       </action>
@@ -87,7 +96,7 @@ else {
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>-100</sound>
+            <sound>musicLoop</sound>
           </argument>
         </arguments>
       </action>
@@ -121,7 +130,7 @@ else {
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>-100</sound>
+            <sound>musicStart</sound>
           </argument>
           <argument>
             <kind>3</kind>
@@ -158,6 +167,29 @@ else {
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>tutText_hold = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -175,7 +207,7 @@ else {
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>-100</sound>
+            <sound>musicStart</sound>
           </argument>
         </arguments>
       </action>
@@ -209,7 +241,7 @@ else {
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>-100</sound>
+            <sound>musicLoop</sound>
           </argument>
         </arguments>
       </action>
@@ -243,7 +275,7 @@ else {
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>-100</sound>
+            <sound>musicLoop</sound>
           </argument>
           <argument>
             <kind>3</kind>
@@ -308,6 +340,29 @@ else {
     }
     draw_set_alpha(1);
 }
+
+if (tutText != "") {
+    if (text_alpha &lt; 1 &amp;&amp; tutText_hold) {
+        text_alpha += text_fadespeed;
+    }
+    else if (text_alpha &gt; 1 &amp;&amp; tutText_hold) {
+        text_alpha = 1;
+    }
+    else if (!tutText_hold) {
+        text_alpha -= text_fadespeed;
+        
+        if (text_alpha &lt;= 0) {
+            tutText = "";
+        }
+    }
+    
+    draw_set_color(c_white);
+    draw_set_halign(fa_center);
+    draw_set_font(fnt_tut);
+    draw_set_alpha(text_alpha);
+    draw_text(text_x,text_y,tutText)
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>
@@ -369,10 +424,58 @@ draw_set_alpha(1);*/
             <kind>1</kind>
             <string>if (player_lives &gt; 1) {
     with (obj_player) {
-        safe_x = start_x;
-        safe_y = safe_y;
         player_death();
     }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="39">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (tutText == "Use arrow keys to move") {
+    alarm[0] = 12;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="10" enumb="37">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (tutText == "Use arrow keys to move") {
+    alarm[0] = 12;
 }
 </string>
           </argument>

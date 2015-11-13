@@ -22,6 +22,8 @@
       <sprite>sprites\spr_player_shoot</sprite>
       <sprite>sprites\spr_proj_player</sprite>
       <sprite>sprites\spr_proj_gauge</sprite>
+      <sprite>sprites\spr_player_placeholder</sprite>
+      <sprite>sprites\spr_player_walk0</sprite>
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_blue</sprite>
@@ -50,7 +52,7 @@
     <script>scripts\button.gml</script>
   </scripts>
   <fonts name="fonts">
-    <font>fonts\tutFont</font>
+    <font>fonts\fnt_tut</font>
   </fonts>
   <objects name="objects">
     <object>objects\obj_player</object>
@@ -71,6 +73,7 @@
     <object>objects\obj_lift</object>
     <object>objects\obj_lookout</object>
     <object>objects\obj_camera</object>
+    <object>objects\obj_checkpoint</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\room4</room>
