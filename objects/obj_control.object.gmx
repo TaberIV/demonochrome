@@ -385,21 +385,29 @@ if (tutText != "") {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>mainBackground_x = view_xview/2;
-middleground_x = view_xview/4;
+            <string>background0_x = view_xview/2;
+background0_y = view_yview;
+background1_x = view_xview/4;
+background1_y = view_yview/2;
+background2_x = view_xview/8;
+background2_y = view_yview/4;
 
 colorCollected = obj_player.yellow + obj_player.red + obj_player.blue;
 colorLeft = instance_number(obj_enemy_yellow) + instance_number(obj_enemy_red) + instance_number(obj_enemy_blue);
 alphaLevel = colorCollected / (colorLeft + colorCollected);
 
-draw_background(mainBackground, mainBackground_x, view_yview)
+draw_background(bkg_sky, background0_x, background0_y)
 draw_set_alpha(alphaLevel);
-draw_background(mainBackground2, mainBackground_x, view_yview)
+draw_background(bkg_sky_black, background0_x, background0_y)
 draw_set_alpha(1);
-/*draw_background(middleground, middleground_x, 400);
+draw_background(bkg_mountain, background1_x, background1_y);
 draw_set_alpha(alphaLevel);
-draw_background(middleground2, middleground_x, 400);
-draw_set_alpha(1);*/
+draw_background(bkg_mountain_black, background1_x, background1_y);
+draw_set_alpha(1);
+draw_background(bkg_mountain2, background2_x, background2_y);
+draw_set_alpha(alphaLevel);
+draw_background(bkg_mountain2_black, background2_x, background2_y);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

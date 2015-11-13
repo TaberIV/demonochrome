@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>hsp = 0;
 vsp = 0;
-dashspeed = 10;
-walkspeed = 2;
+dashspeed = -10;
+walkspeed = -2;
 grav = 2;
 pause = 48;
 dashtime = 12;
@@ -83,7 +83,8 @@ alarm[0] = pause * (random(1.25) + .75);
             <kind>1</kind>
             <string>if (hsp == walkspeed) {
     hsp = dashspeed;
-    alarm[0] = dashtime * (random(.5) + .75);
+    alarm[0] = dashtime * (random(.75) + .75);
+    image_xscale = sign(random(1) - .2);
 }
 else {
     hsp = walkspeed;
@@ -105,7 +106,7 @@ else {
         <exetype>2</exetype>
         <functionname></functionname>
         <codestring></codestring>
-        <whoName>self</whoName>
+        <whoName>obj_enemy_blue</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
@@ -117,16 +118,20 @@ else {
 
 vsp += grav;
 
-if (place_meeting(x + hsp,y,obj_wall) || !place_meeting(x + hsp, y + 1, obj_wall)) {
-    
+if (!place_meeting(x + sprite_width, y + 5, obj_wall)
+ || !place_meeting(x - sprite_width, y + 5, obj_wall)
+ || place_meeting(x + hsp,y,obj_wall)) {
+    walkspeed *= -1;
+    dashspeed *= -1;
+    hsp *= -1;
 }
 
 //Prevents wall overlap****************************************
 if (place_meeting(x + hsp,y,obj_wall)) {
     while(!place_meeting(x + image_xscale * hsp,y,obj_wall) ) {
-        x += image_xscale;
+        x += sign(hsp);
     }
-    image_xscale *= -1;
+    show_debug_message("There");
     hsp = 0;
 }
 
@@ -138,7 +143,11 @@ if (place_meeting(x,y + vsp,obj_wall)) {
 }
 //*************************************************************
 
-x += hsp * image_xscale;
+if (hsp != 0) {
+    image_xscale = 1 * sign(hsp);
+}
+
+x += hsp;
 y += vsp;
 </string>
           </argument>

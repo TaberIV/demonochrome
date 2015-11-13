@@ -40,11 +40,12 @@
     </sprites>
   </sprites>
   <backgrounds name="background">
-    <background>background\background0</background>
-    <background>background\mainBackground</background>
-    <background>background\mainBackground2</background>
-    <background>background\middleground</background>
-    <background>background\middleground2</background>
+    <background>background\bkg_sky</background>
+    <background>background\bkg_sky_black</background>
+    <background>background\bkg_mountain</background>
+    <background>background\bkg_mountain_black</background>
+    <background>background\bkg_mountain2</background>
+    <background>background\bkg_mountain2_black</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
