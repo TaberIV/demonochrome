@@ -57,7 +57,7 @@ vsp += grav;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_wall">
+    <event eventtype="4" ename="obj_platform">
       <action>
         <libid>1</libid>
         <id>603</id>

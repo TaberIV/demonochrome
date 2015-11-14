@@ -28,6 +28,7 @@
             <string>//Initialize variables
 start_x = x;
 start_y = y;
+gamepad_set_axis_deadzone(0, .5);
 instance_create(x, y, obj_checkpoint);
 knocked = false;
 
@@ -228,22 +229,22 @@ if (place_meeting(x,y,obj_wall)) {
           <argument>
             <kind>1</kind>
             <string>//Get player input
-key_right = keyboard_check(vk_right);
-key_left = -keyboard_check(vk_left);
+key_right = keyboard_check(vk_right) || (gamepad_axis_value(0,gp_axislh) &gt; 0);
+key_left = -(keyboard_check(vk_left) || (gamepad_axis_value(0,gp_axislh) &lt; 0));
 
-key_jump = keyboard_check(vk_up);
-key_jump_pressed = keyboard_check_pressed(vk_up);
+key_jump = keyboard_check(vk_up) || gamepad_button_check(0, gp_face1);
+key_jump_pressed = keyboard_check_pressed(vk_up) || gamepad_button_check_pressed(0, gp_face1);
 
-key_attack = keyboard_check(vk_space);
-key_attack_pressed = keyboard_check_pressed(vk_space);
+key_attack = keyboard_check(vk_space) || gamepad_button_check(0, gp_face2);
+key_attack_pressed = keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(0, gp_face2);
 
-key_shoot = keyboard_check(vk_control);
-key_shoot_pressed = keyboard_check_pressed(vk_control);
+key_shoot = keyboard_check(vk_control) || gamepad_button_check(0, gp_face3);
+key_shoot_pressed = keyboard_check_pressed(vk_control) || gamepad_button_check_pressed(0, gp_face3);;
 
+key_dash = keyboard_check(vk_shift) || gamepad_button_check(0, gp_face4) ;
+key_dash_pressed = keyboard_check_pressed(vk_shift) || gamepad_button_check_pressed(0, gp_face4);;;
 min_dashtime = min_dash / dashspeed;
 max_dashtime = max_dash / dashspeed;
-key_dash = keyboard_check(vk_shift);
-key_dash_pressed = keyboard_check_pressed(vk_shift);
 can_dash = dash_timer &amp;&amp; (blue &gt; 0 || min_dashtime &gt; 0)
         &amp;&amp; place_meeting(x,y+1,obj_wall) &amp;&amp; jump == 0;
 

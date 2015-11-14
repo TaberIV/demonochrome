@@ -23,9 +23,6 @@
       <sprite>sprites\spr_proj_player</sprite>
       <sprite>sprites\spr_proj_gauge</sprite>
       <sprite>sprites\spr_player_placeholder</sprite>
-      <sprite>sprites\spr_player_walk0</sprite>
-      <sprite>sprites\spr_player_lives</sprite>
-      <sprite>sprites\spr_player_lives2</sprite>
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_blue</sprite>

@@ -3,7 +3,7 @@
   <caption></caption>
   <width>4544</width>
   <height>1152</height>
-  <vsnap>1</vsnap>
+  <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
   <speed>24</speed>
@@ -248,7 +248,7 @@ global.theme = "mountain";</code>
     <instance objName="obj_platform" x="96" y="1056" name="inst_78DED65F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="64" y="1056" name="inst_30C6FEF3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="32" y="1056" name="inst_B58BD1CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_lift" x="67" y="1024" name="inst_73978D36" locked="0" code="active = false;&#xA;&#xA;time = 24 * 5;&#xA;end_x = 64;&#xA;end_y = 506;&#xA;" scaleX="4.53125" scaleY="1.96875" colour="4294967295" rotation="0"/>
+    <instance objName="obj_lift" x="67" y="1024" name="inst_73978D36" locked="0" code="active = false;&#xA;&#xA;time = 24 * 5;&#xA;end_x = 64;&#xA;end_y = 480;&#xA;" scaleX="4.53125" scaleY="1.96875" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="256" y="1056" name="inst_D945BF7D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="288" y="1056" name="inst_3CC53028" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="320" y="1056" name="inst_114A9B68" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>

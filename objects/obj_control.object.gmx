@@ -25,41 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>player_lives = 3;
-alphaLevel = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="73">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>for (i = 0; i &lt; 3; i++) {
-    if (player_lives &gt; i) {
-        draw_sprite(spr_player_lives, image_index, view_xview + i * 48, view_yview[0]);
-    }
-    
-    draw_set_alpha(.5);
-    if (player_lives &lt; 3 - i) {
-        draw_sprite(spr_player_lives2, image_index, view_xview + (2 - i) * 48, view_yview[0])
-    }
-    draw_set_alpha(1);
-}
+            <string>alphaLevel = 0;
 </string>
           </argument>
         </arguments>
@@ -124,58 +90,6 @@ draw_background(bkg_mountain_front0_black, background0_x, background2_y);
 draw_background(bkg_mountain_front1_black, background0_x + 2048, background2_y);
 draw_background(bkg_mountain_front2_black, background0_x + 4096, background2_y);
 draw_set_alpha(1);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="82">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (player_lives &gt; 1) {
-    with (obj_player) {
-        safe_x = start_x;
-        safe_y = start_y;
-        player_death();
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="10" enumb="27">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>room_restart();
 </string>
           </argument>
         </arguments>
