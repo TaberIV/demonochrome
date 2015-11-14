@@ -92,7 +92,7 @@ draw_set_halign(fa_center);
 draw_set_font(fnt_tut);
 draw_text(text_x,text_y,tutText)
 
-tutText = "These are the creatures of Indingo's#colorful world.Exterminate them and extract#their color for your own use.";
+tutText = "These are the creatures of Indingo's#colorful world. Exterminate them and extract#their color for your own use.";
 text_x = 864 - 128;
 text_y = 608 - 64 + 192;
 
@@ -119,9 +119,9 @@ draw_set_halign(fa_center);
 draw_set_font(fnt_tut);
 draw_text(text_x,text_y,tutText)
 
-tutText = "Blue gives dash. Use with Shitf#Red gives shoot. Use &lt;ctrl&gt;.";
-text_x = 1664;
-text_y = 960
+tutText = "Blue gives dash.      Red gives shoot.#Use with Shift.            Use &lt;ctrl&gt;.";
+text_x = 1920;
+text_y = 736 + 192;
 
 draw_set_color(c_white);
 draw_set_halign(fa_center);

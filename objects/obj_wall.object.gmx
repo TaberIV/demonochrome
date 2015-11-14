@@ -29,9 +29,12 @@
 alphaLevel = 0;
 
 if(sprite_index = spr_wall) {
-    draw_set_alpha(obj_control.alphaLevel);
-    draw_sprite(spr_wall2, 0, x, y);
-    draw_set_alpha(1);
+    if (x % 64) {
+        draw_sprite_ext(spr_wall_mask, 0, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
+    }
+    else {
+        draw_sprite_ext(spr_wall_mask2, 0, x, y, image_xscale, image_yscale, image_angle, c_white, 1);
+    }
 }
 </string>
           </argument>
