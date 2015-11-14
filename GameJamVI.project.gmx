@@ -43,13 +43,49 @@
     <sprite>sprites\spr_arrow</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\bkg_sky</background>
-    <background>background\bkg_sky_black</background>
-    <background>background\bkg_mountain</background>
-    <background>background\bkg_mountain_black</background>
+    <background>background\bkg_sky0</background>
+    <background>background\bkg_sky1</background>
+    <background>background\bkg_sky2</background>
+    <background>background\bkg_sky_black0</background>
+    <background>background\bkg_sky_black1</background>
+    <background>background\bkg_sky_black2</background>
+    <background>background\bkg_mountain0</background>
+    <background>background\bkg_mountain0_black</background>
+    <background>background\bkg_mountain1</background>
+    <background>background\bkg_mountain1_black</background>
     <background>background\bkg_mountain2</background>
     <background>background\bkg_mountain2_black</background>
+    <background>background\bkg_mountain_front0</background>
+    <background>background\bkg_mountain_front0_black</background>
+    <background>background\bkg_mountain_front1</background>
+    <background>background\bkg_mountain_front1_black</background>
+    <background>background\bkg_mountain_front2</background>
+    <background>background\bkg_mountain_front2_black</background>
     <background>background\bkg_menu</background>
+    <background>background\bkg_forest4_1</background>
+    <background>background\bkg_forest4_black1</background>
+    <background>background\bkg_forest4_2</background>
+    <background>background\bkg_forest4_black2</background>
+    <background>background\bkg_forest4_3</background>
+    <background>background\bkg_forest4_black3</background>
+    <background>background\bkg_forest3_1</background>
+    <background>background\bkg_forest3_black1</background>
+    <background>background\bkg_forest3_2</background>
+    <background>background\bkg_forest3_black2</background>
+    <background>background\bkg_forest3_3</background>
+    <background>background\bkg_forest3_black3</background>
+    <background>background\bkg_forest2_1</background>
+    <background>background\bkg_forest2_black1</background>
+    <background>background\bkg_forest2_2</background>
+    <background>background\bkg_forest2_black2</background>
+    <background>background\bkg_forest2_3</background>
+    <background>background\bkg_forest2_black3</background>
+    <background>background\bkg_forest1_1</background>
+    <background>background\bkg_forest1_black1</background>
+    <background>background\bkg_forest1_2</background>
+    <background>background\bkg_forest1_black2</background>
+    <background>background\bkg_forest1_3</background>
+    <background>background\bkg_forest1_black3</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -64,8 +100,8 @@
     <object>objects\obj_player</object>
     <object>objects\obj_player_attack</object>
     <object>objects\obj_control</object>
+    <object>objects\obj_controlForest</object>
     <object>objects\obj_control_music</object>
-    <object>objects\obj_tut_control</object>
     <object>objects\obj_yellow</object>
     <objects name="enemies">
       <object>objects\obj_enemy</object>
@@ -90,6 +126,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\menu</room>
+    <room>rooms\tutorial</room>
     <room>rooms\lvl1</room>
   </rooms>
   <help>

@@ -8,44 +8,6 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="0" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>tutText = "";
-tutText_hold = false;
-
-text_fadespeed = 1/24.0;
-text_alpha = 0;
-
-if (room == room4) {
-    tutText = "Use arrow keys to move";
-    text_x = 704;
-    text_y = 144;
-    tutText_hold = true;
-}
-else {
-    tutText = "";
-    tutText_hold = false;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
     <event eventtype="2" enumb="0">
       <action>
         <libid>1</libid>
@@ -69,6 +31,37 @@ else {
         </arguments>
       </action>
     </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (tut_count == 0) {
+    tut_count = 0;
+    tutText = "Use arrow keys to move";
+    text_x = 448;
+    text_y = 448;
+    tutText_hold = true;
+}
+
+while (
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="8" enumb="73">
       <action>
         <libid>1</libid>
@@ -86,28 +79,29 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (tutText != "") {
-    if (text_alpha &lt; 1 &amp;&amp; tutText_hold) {
-        text_alpha += text_fadespeed;
-    }
-    else if (text_alpha &gt; 1 &amp;&amp; tutText_hold) {
-        text_alpha = 1;
-    }
-    else if (!tutText_hold) {
-        text_alpha -= text_fadespeed;
-        
-        if (text_alpha &lt;= 0) {
-            tutText = "";
-        }
-    }
-    
-    draw_set_color(c_white);
-    draw_set_halign(fa_center);
-    draw_set_font(fnt_tut);
-    draw_set_alpha(text_alpha);
-    draw_text(text_x,text_y,tutText)
-    draw_set_alpha(1);
-}
+            <string>tutText = "Use arrow keys to move";
+text_x = 448;
+text_y = 448;
+
+draw_set_color(c_white);
+draw_set_halign(fa_center);
+draw_set_font(fnt_tut);
+draw_set_alpha(text_alpha);
+draw_text(text_x,text_y,tutText)
+draw_set_alpha(1);
+
+tutText = "These are the creatures of Indingo's colorful world.#Exterminatethem and extract their color for your own use.";
+text_x = 864;
+text_y = 608;
+
+draw_set_color(c_white);
+draw_set_halign(fa_center);
+draw_set_font(fnt_tut);
+draw_set_alpha(text_alpha);
+draw_text(text_x,text_y,tutText)
+draw_set_alpha(1);
+
+
 </string>
           </argument>
         </arguments>

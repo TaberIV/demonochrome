@@ -100,17 +100,29 @@ if (instance_exists(obj_player)) {
     }
 }
 
-draw_background(bkg_sky, background0_x, background0_y)
+draw_background(bkg_sky0, background0_x, background0_y);
+draw_background(bkg_sky1, background0_x + 2048, background0_y);
+draw_background(bkg_sky2, background0_x + 4096, background0_y);
 draw_set_alpha(alphaLevel);
-draw_background(bkg_sky_black, background0_x, background0_y)
+draw_background(bkg_sky_black0, background0_x, background0_y);
+draw_background(bkg_sky_black1, background0_x + 2048, background0_y);
+draw_background(bkg_sky_black2, background0_x + 4096, background0_y);
 draw_set_alpha(1);
-draw_background(bkg_mountain, background1_x, background1_y);
+draw_background(bkg_mountain0, background0_x, background1_y);
+draw_background(bkg_mountain1, background0_x + 2048, background1_y);
+draw_background(bkg_mountain2, background0_x + 4096, background1_y);
 draw_set_alpha(alphaLevel);
-draw_background(bkg_mountain_black, background1_x, background1_y);
+draw_background(bkg_mountain0_black, background0_x, background1_y);
+draw_background(bkg_mountain1_black, background0_x + 2048, background1_y);
+draw_background(bkg_mountain2_black, background0_x + 4096, background1_y);
 draw_set_alpha(1);
-draw_background(bkg_mountain2, background2_x, background2_y);
+draw_background(bkg_mountain_front0, background0_x, background2_y);
+draw_background(bkg_mountain_front1, background0_x + 2048, background2_y);
+draw_background(bkg_mountain_front2, background0_x + 4096, background2_y);
 draw_set_alpha(alphaLevel);
-draw_background(bkg_mountain2_black, background2_x, background2_y);
+draw_background(bkg_mountain_front0_black, background0_x, background2_y);
+draw_background(bkg_mountain_front1_black, background0_x + 2048, background2_y);
+draw_background(bkg_mountain_front2_black, background0_x + 4096, background2_y);
 draw_set_alpha(1);
 </string>
           </argument>

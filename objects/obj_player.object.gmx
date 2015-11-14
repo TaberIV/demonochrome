@@ -159,7 +159,7 @@ else {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (lift &amp;&amp; (jump &lt; 6 || vsp &gt; 0) &amp;&amp; place_meeting(x,y+10,obj_lift)) {
+            <string>if (lift &amp;&amp; jump &lt; 5 &amp;&amp; place_meeting(x,y+10,obj_lift)) {
     while (!place_meeting(x,y + 1,obj_lift)) {
         vsp = 0;
         y++;
