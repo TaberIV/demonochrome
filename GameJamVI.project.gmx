@@ -35,14 +35,13 @@
     </sprites>
     <sprites name="Objects">
       <sprite>sprites\spr_wall</sprite>
-      <sprite>sprites\spr_wall2</sprite>
+      <sprite>sprites\spr_wall_mask_mountain</sprite>
+      <sprite>sprites\spr_wall_mask_forrest</sprite>
       <sprite>sprites\spr_latch</sprite>
       <sprite>sprites\spr_button</sprite>
       <sprite>sprites\spr_button_pressed</sprite>
+      <sprite>sprites\spr_arrow</sprite>
     </sprites>
-    <sprite>sprites\spr_arrow</sprite>
-    <sprite>sprites\spr_wall_mask</sprite>
-    <sprite>sprites\spr_wall_mask2</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bkg_sky0</background>
@@ -101,6 +100,7 @@
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_player_attack</object>
+    <object>objects\obj_proj_player</object>
     <object>objects\obj_control</object>
     <object>objects\obj_controlForest</object>
     <object>objects\obj_control_music</object>
@@ -112,17 +112,17 @@
       <object>objects\obj_enemy_red</object>
       <object>objects\obj_proj_red</object>
     </objects>
-    <object>objects\obj_wall</object>
-    <object>objects\obj_latch</object>
     <object>objects\obj_button</object>
-    <object>objects\obj_proj_gauge</object>
+    <object>objects\obj_wall</object>
+    <object>objects\obj_platform</object>
+    <object>objects\obj_latch</object>
     <object>objects\obj_lift</object>
+    <object>objects\obj_proj_gauge</object>
     <object>objects\obj_lookout</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_checkpoint</object>
     <object>objects\obj_end</object>
     <object>objects\obj_player_end</object>
-    <object>objects\obj_proj_player</object>
     <object>objects\obj_button_play</object>
     <object>objects\obj_arrow</object>
   </objects>
