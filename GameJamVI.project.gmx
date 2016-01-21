@@ -87,7 +87,6 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\player_death.gml</script>
     <script>scripts\button.gml</script>
     <script>scripts\endLevel.gml</script>
   </scripts>

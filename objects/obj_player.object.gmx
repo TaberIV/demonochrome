@@ -26,186 +26,29 @@
           <argument>
             <kind>1</kind>
             <string>//Initialize variables
-start_x = x;
-start_y = y;
 gamepad_set_axis_deadzone(0, .5);
 instance_create(x, y, obj_checkpoint);
-knocked = false;
 
-grav = 2; //Grav looks okay from .2 to 5
+grav = 2;
 hsp = 0;
 vsp = 0;
 
+action = none;
+
 run_speed = 20;
-air_speed = 10;
 movespeed = run_speed;
 
 dashspeed = 64;
-dashing = false;
-dash_pause = 24;
-dash_timer = true;
+dash_ready = true;
+min_dashtime = min_dash / dashspeed;
+max_dashtime = max_dash / dashspeed;
 //Sets jumpspeed to the right amount to rise n pixels
 height = 2 * 32;
 jumpspeed = sqrt(2 * height * grav) + 2;
 
-jump = 0;
-jumpShort = false;
-attack = 0;
-
-can_act = true;
-shoot = false;
-shooting = false;
-shoot_time = true;
-
-lift = false;
-
 yellow = 0;
 red = 0;
 blue = 0;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (dashing) {
-    dashing = false;
-    alarm[2] = dash_pause;
-    dash_timer = false;
-}
-else {
-    dash_timer = true;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="1">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>can_act = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="2" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>shoot_time = true;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (lift &amp;&amp; jump &lt; 5 &amp;&amp; place_meeting(x,y+10,obj_lift)) {
-    while (!place_meeting(x,y + 1,obj_lift)) {
-        vsp = 0;
-        y++;
-    }
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>//Hack ass soloution to annoying jump collision problecms!!!!!!
-if (place_meeting(x,y,obj_wall)) {
-    count = 1;
-    while(place_meeting(x,y,obj_wall)) {
-        if (!place_meeting(x + count,y,obj_wall)) {
-            x += count;
-        }
-        else if (!place_meeting(x,y + count,obj_wall)) {
-            y +=count;
-        }
-        else if (!place_meeting(x + count,y + count,obj_wall)) {
-            x += count;
-            y +=count;
-        }
-        count *= -1;
-        if(abs(count) == count) {
-            count++;
-        }
-    }
-}
 </string>
           </argument>
         </arguments>
@@ -228,7 +71,9 @@ if (place_meeting(x,y,obj_wall)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Get player input
+            <string>onGround = place_meeting(x,y + 1,obj_wall);
+
+//Get player input
 key_right = keyboard_check(vk_right) || (gamepad_axis_value(0,gp_axislh) &gt; 0);
 key_left = -(keyboard_check(vk_left) || (gamepad_axis_value(0,gp_axislh) &lt; 0));
 
@@ -238,243 +83,13 @@ key_jump_pressed = keyboard_check_pressed(vk_up) || gamepad_button_check_pressed
 key_attack = keyboard_check(vk_space) || gamepad_button_check(0, gp_face2);
 key_attack_pressed = keyboard_check_pressed(vk_space) || gamepad_button_check_pressed(0, gp_face2);
 
-key_shoot = keyboard_check(vk_control) || gamepad_button_check(0, gp_face3);
-key_shoot_pressed = keyboard_check_pressed(vk_control) || gamepad_button_check_pressed(0, gp_face3);;
+key_shoot = keyboard_check(vk_control) || gamepad_button_check(0, gp_face4);
+key_shoot_pressed = keyboard_check_pressed(vk_control) || gamepad_button_check_pressed(0, gp_face4);
 
-key_dash = keyboard_check(vk_shift) || gamepad_button_check(0, gp_face4) ;
-key_dash_pressed = keyboard_check_pressed(vk_shift) || gamepad_button_check_pressed(0, gp_face4);;;
-min_dashtime = min_dash / dashspeed;
-max_dashtime = max_dash / dashspeed;
-can_dash = dash_timer &amp;&amp; (blue &gt; 0 || min_dashtime &gt; 0)
-        &amp;&amp; place_meeting(x,y+1,obj_wall) &amp;&amp; jump == 0;
-
-if (knocked) {
-    can_act = false;
-    if (place_meeting(x,y+1,obj_wall)) {
-        knocked = false;
-        can_act = true;
-    }
-}
-//Shoots Projectile-------------------------
-can_shoot = shoot_time &amp;&amp; (red &gt; 0 || min_shotspeed &gt; 0)
-        &amp;&amp; place_meeting(x,y+1,obj_wall) &amp;&amp; jump == 0;
-if (can_shoot &amp;&amp; (key_shoot_pressed || shooting)) {
-    can_act = false;
-    shoot = false;
-    shooting = key_shoot;    
-    
-    if (key_shoot_pressed) {
-        angle = pi/2;
-        bar = instance_create(x + image_xscale * 50, y - 25, obj_proj_gauge);
-    }
-    else if (angle &gt; 0 &amp;&amp; shooting) {
-        angle -= pi/24;
-    }
-    else {
-        shoot = true;
-        shooting = false;
-    }
-    with (bar) {
-        image_xscale = obj_player.image_xscale;
-        image_angle = radtodeg(obj_player.image_xscale * obj_player.angle);
-    }
-    
-    
-}        
-if (shoot) {
-    with (bar) {instance_destroy(); }
-    inst = instance_create(x + image_xscale * 50, y - 25, obj_proj_player);
-    with (inst) {
-        angle = obj_player.angle;
-        max_shotspeed = obj_player.max_shotspeed;
-        min_shotspeed = obj_player.min_shotspeed + 3 ;
-        
-        sp = max_shotspeed * obj_player.red / (instance_number(obj_enemy_red) + obj_player.red)
-            + min_shotspeed * instance_number(obj_enemy_red) / (instance_number(obj_enemy_red) + obj_player.red);
-
-        hsp = sp * obj_player.image_xscale * cos(angle);
-        vsp = -sp * sin(angle);
-        grav = .7;
-    }
-    shoot_time = false
-    shoot = false;
-    alarm[0] = 36;
-    alarm[1] = 12;
-}
-//------------------------------------------
-
-//************************************************************************
-//Calculate movement******************************************************
-else if (can_act &amp;&amp; key_dash_pressed &amp;&amp; can_dash || dashing) {
-    dashing = key_dash;
-        
-    dashtime = min_dashtime * instance_number(obj_enemy_blue) / (instance_number(obj_enemy_blue) + blue)
-            + max_dashtime * blue / (instance_number(obj_enemy_blue) + blue);
-    
-    if (key_dash_pressed) {
-        alarm[2] = dashtime;
-    }
-    
-    if (dashing) {
-        movespeed = dashspeed;
-        vsp = 0;
-        vsp -= grav;
-        move = image_xscale;
-    }
-    else {
-        alarm[2] = dash_pause;
-        can_dash = false;
-        dash_timer = false;
-    }
-}
-
-//Attack---------------------------------------------------------------------------------
-else if ((can_act &amp;&amp; key_attack_pressed &amp;&amp; place_meeting(x,y+1,obj_wall)) || attack &gt; 0) { 
-    can_act = false;
-    move = 0;
-    
-    if (attack == 0) {
-        inst = instance_create(x,y, obj_player_attack);
-        with (inst) {
-            image_xscale = obj_player.image_xscale;
-        }
-    }
-    attack++;
-    if (attack == 5) {
-        with (obj_player_attack) {
-            instance_destroy();
-        }
-        can_act = true;
-        attack = 0;
-    }
-}
-//---------------------------------------------------------------------------------------
-
-else if (can_act) {
-    move = key_left + key_right;                                         
-    
-    //Jump code**********************************
-    if (place_meeting(x,y+1,obj_wall)) { //If player on ground
-        movespeed = run_speed;
-    
-        if (jump == 6) {
-            jump = 0;
-        }
-    
-        if (key_jump_pressed &amp;&amp; jump == 0) {
-            jump = 5;
-            hsp = 0;
-        }
-        else if (jump &gt;= 1 &amp;&amp; jump &lt; 5) {
-            if (!key_jump) {
-                jumpShort = true;
-            }
-            jump++;
-            hsp = 0;
-        }
-        if (jump == 5) {
-            vsp = -jumpspeed;
-            jumpShort = false;
-            jump = 0;
-            hsp = 0;
-            
-            if (!jumpShort) {
-               jump = 6;
-            }
-        }
-    }
-    else {
-        if (movespeed &gt; air_speed) {
-            if (movespeed = dashspeed) {
-                movespeed = run_speed;
-            }
-            movespeed -= .5;
-        }
-    }
-    
-    if (jump == 6) {
-        if (key_jump &amp;&amp; vsp &lt; -1) {
-            numYellow = instance_number(obj_yellow) + instance_number(obj_enemy_yellow);
-            
-            agrav_min = (grav - power(jumpspeed - 2, 2) / (2 * min_height))
-             * (numYellow) / (numYellow + yellow);
-            agrav_here = (grav - power(jumpspeed - 1, 2) / (2 * max_height))
-             * yellow / (numYellow + yellow);
-             
-            agrav = agrav_here + agrav_min;
-            vsp -= agrav;
-        }
-        else {
-            jump = 0;
-        }
-    }
-    //*******************************************
-}
-else {
-    move = 0;
-}
-
-vsp += grav;
-if (!knocked) {
-    hsp = move * movespeed;
-}
-
-//Prevents wall overlap************************************
-if (place_meeting(x + hsp,y,obj_wall)) {
-    while(!place_meeting(x + sign(hsp),y,obj_wall)) {
-        x += sign(hsp);
-    }
-    hsp = 0;
-    
-}
-
-if (place_meeting(x,y + vsp,obj_wall)) {
-    while(!place_meeting(x,y + sign(vsp),obj_wall)) {
-        y += sign(vsp);
-    }
-    vsp = 0;
-}
-//*********************************************************
-
-x += hsp;
-y += vsp;
-//************************************************************************
-//************************************************************************
+key_dash = keyboard_check(vk_shift) || gamepad_button_check(0, gp_face4);
+key_dash_pressed = keyboard_check_pressed(vk_shift) || gamepad_button_check_pressed(0, gp_face4);
 
 
-//Handles sprites based on movement------------------------
-if (abs(hsp) &gt; 0 &amp;&amp; !knocked) {
-    image_xscale = sign(hsp);
-}
-
-if (place_meeting(x,y+1,obj_wall)) { //If on ground
-    if (jump = 0) {
-        if (hsp == 0 &amp;&amp; attack == 0) {
-            sprite_index = spr_player;
-        }
-        else if(hsp != 0) {
-            sprite_index = spr_player_walk;
-        }
-        else if (attack &gt; 0) {
-            sprite_index = spr_player_attack;
-        }
-    }
-    else { 
-        sprite_index = spr_player_jump
-    }
-}
-else { //In air
-    if (vsp &lt; 0) {
-        sprite_index = spr_player_rise
-    }
-    else {
-        sprite_index = spr_player_fall
-    }
-}
-if (dashing) {
-    sprite_index = spr_player_dash;
-}
-//---------------------------------------------------------
 </string>
           </argument>
         </arguments>
@@ -526,32 +141,9 @@ if (dashing) {
             <kind>1</kind>
             <string>if (place_meeting(x,y + 1,obj_wall) 
     &amp;&amp; distance_to_object(obj_enemy_red) &gt; 144) {
-    safe_x = instance_nearest(x, y, obj_checkpoint).x;
-    safe_y = instance_nearest(x, y, obj_checkpoint).y;
+    check_x = instance_nearest(x, y, obj_checkpoint).x;
+    check_y = instance_nearest(x, y, obj_checkpoint).y;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_lift">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>lift = true;
 </string>
           </argument>
         </arguments>
@@ -585,41 +177,25 @@ if (dashing) {
     <event eventtype="7" enumb="0">
       <action>
         <libid>1</libid>
-        <id>601</id>
-        <kind>0</kind>
+        <id>603</id>
+        <kind>7</kind>
         <userelative>0</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_execute_script</functionname>
+        <exetype>2</exetype>
+        <functionname></functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>9</kind>
-            <script>player_death</script>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string></string>
+            <kind>1</kind>
+            <string>x = check_x;
+y = xheck_y;
+hsp = 0;
+vsp = 0;
+</string>
           </argument>
         </arguments>
       </action>
