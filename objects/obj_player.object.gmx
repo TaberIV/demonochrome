@@ -33,7 +33,7 @@ grav = 2;
 hsp = 0;
 vsp = 0;
 
-action = none;
+action = "none";
 
 run_speed = 20;
 movespeed = run_speed;
@@ -89,7 +89,9 @@ key_shoot_pressed = keyboard_check_pressed(vk_control) || gamepad_button_check_p
 key_dash = keyboard_check(vk_shift) || gamepad_button_check(0, gp_face4);
 key_dash_pressed = keyboard_check_pressed(vk_shift) || gamepad_button_check_pressed(0, gp_face4);
 
-
+if (action == "stop")
+    hsp = 0;
+else if (
 </string>
           </argument>
         </arguments>
