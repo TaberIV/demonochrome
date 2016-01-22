@@ -92,6 +92,7 @@ key_dash_pressed = keyboard_check_pressed(vk_shift) || gamepad_button_check_pres
 if (action == "stop")
     hsp = 0;
 else if (
+
 </string>
           </argument>
         </arguments>
