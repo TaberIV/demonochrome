@@ -8,6 +8,29 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>angle = pi/2 + pi/12;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,12 +48,29 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!obj_player.shooting) {
-    instance_destroy();
-}
-
-x = obj_player.x + obj_player.image_xscale * 50
+            <string>x = obj_player.x + obj_player.image_xscale * 50
 y = obj_player.y - 25;
+
+angle -= pi/24;
+
+image_xscale = obj_player.image_xscale;
+image_angle = radtodeg(obj_player.image_xscale * angle);
+
+if (!player.key_shoot) {
+    inst = instance_create(x, y, obj_proj_player);
+    with (inst) {
+        angle = obj_player.angle;
+        max_shotspeed = obj_player.max_shotspeed;
+        min_shotspeed = obj_player.min_shotspeed + 3 ;
+
+        sp = max_shotspeed * obj_player.red / (instance_number(obj_enemy_red) + obj_player.red)
+            + min_shotspeed * instance_number(obj_enemy_red) / (instance_number(obj_enemy_red) + obj_player.red);
+
+        hsp = sp * obj_player.image_xscale * cos(angle);
+        vsp = -sp * sin(angle);
+        grav = .7;
+    }
+}
 </string>
           </argument>
         </arguments>

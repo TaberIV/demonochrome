@@ -89,9 +89,17 @@ key_shoot_pressed = keyboard_check_pressed(vk_control) || gamepad_button_check_p
 key_dash = keyboard_check(vk_shift) || gamepad_button_check(0, gp_face4);
 key_dash_pressed = keyboard_check_pressed(vk_shift) || gamepad_button_check_pressed(0, gp_face4);
 
-if (action == "stop")
-    hsp = 0;
-else if (
+if (action == "none") {
+    if (key_dash_pressed) {
+        action = dash;
+        //set and test alarm
+    }
+    else if (key_shoot_pressed) {
+        action = "shoot";
+        bar = instance_create(x + image_xscale * 50, y - 25, obj_proj_gauge);
+        //set and test alarm
+    }
+}
 </string>
           </argument>
         </arguments>
