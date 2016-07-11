@@ -211,7 +211,6 @@ global.theme = "mountain";</code>
     <instance objName="obj_latch" x="3296" y="608" name="inst_0C240626" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_latch" x="3296" y="576" name="inst_8BF41D67" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="90"/>
     <instance objName="obj_player" x="320" y="487" name="inst_A720D904" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_control" x="32" y="0" name="inst_15263F42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="1248" y="480" name="inst_19235035" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_yellow" x="2720" y="576" name="inst_0928226D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_yellow" x="2848" y="576" name="inst_683CB312" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -270,7 +269,7 @@ global.theme = "mountain";</code>
     <instance objName="obj_platform" x="768" y="1056" name="inst_281A622A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="1248" y="1120" name="inst_08A14FFF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_lookout" x="1232" y="1063" name="inst_A6EC9F94" locked="0" code="look_x = x + 480;&#xA;look_y = y;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_camera" x="32" y="0" name="inst_2C2E6715" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_camera" x="64" y="32" name="inst_2C2E6715" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_red" x="320" y="1024" name="inst_24E4F0BC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_enemy_red" x="1216" y="1088" name="inst_6AA523AB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_platform" x="1216" y="1120" name="inst_10A2EC8F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -427,6 +426,7 @@ global.theme = "mountain";</code>
     <instance objName="obj_platform" x="0" y="576" name="inst_673A66DD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_end" x="1952" y="1063" name="inst_3A1B254D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_checkpoint" x="3200" y="583" name="inst_3A41FC03" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_control" x="32" y="0" name="inst_85741DCD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>-10</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -48,14 +48,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>background0_x = view_xview / 2;
-background0_y = view_yview;
-background1_x = view_xview / 4;
-background1_y = view_yview / 2 + 32;
-background2_x = view_xview / 8;
-background2_y = view_yview / 4 + 64;
-
-if (instance_exists(obj_player)) {
+            <string>if (instance_exists(obj_player)) {
     colorCollected = obj_player.yellow + obj_player.red + obj_player.blue;
     colorLeft = instance_number(obj_enemy_yellow) + instance_number(obj_enemy_red) + instance_number(obj_enemy_blue);
     if (alphaLevel &lt; colorCollected / (colorLeft + colorCollected)) {
@@ -66,30 +59,84 @@ if (instance_exists(obj_player)) {
     }
 }
 
-draw_background(bkg_sky0, background0_x, background0_y);
-draw_background(bkg_sky1, background0_x + 2048, background0_y);
-draw_background(bkg_sky2, background0_x + 4096, background0_y);
-draw_set_alpha(alphaLevel);
-draw_background(bkg_sky_black0, background0_x, background0_y);
-draw_background(bkg_sky_black1, background0_x + 2048, background0_y);
-draw_background(bkg_sky_black2, background0_x + 4096, background0_y);
-draw_set_alpha(1);
-draw_background(bkg_mountain0, background0_x, background1_y);
-draw_background(bkg_mountain1, background0_x + 2048, background1_y);
-draw_background(bkg_mountain2, background0_x + 4096, background1_y);
-draw_set_alpha(alphaLevel);
-draw_background(bkg_mountain0_black, background0_x, background1_y);
-draw_background(bkg_mountain1_black, background0_x + 2048, background1_y);
-draw_background(bkg_mountain2_black, background0_x + 4096, background1_y);
-draw_set_alpha(1);
-draw_background(bkg_mountain_front0, background0_x, background2_y);
-draw_background(bkg_mountain_front1, background0_x + 2048, background2_y);
-draw_background(bkg_mountain_front2, background0_x + 4096, background2_y);
-draw_set_alpha(alphaLevel);
-draw_background(bkg_mountain_front0_black, background0_x, background2_y);
-draw_background(bkg_mountain_front1_black, background0_x + 2048, background2_y);
-draw_background(bkg_mountain_front2_black, background0_x + 4096, background2_y);
-draw_set_alpha(1);
+switch (global.theme) {
+    case "mountain":
+        background0_x = view_xview / 2;
+        background0_y = view_yview;
+        background1_x = view_xview / 4;
+        background1_y = view_yview / 2 + 32;
+        background2_x = view_xview / 8;
+        background2_y = view_yview / 4 + 64;
+        
+        draw_background(bkg_sky0, background0_x, background0_y);
+        draw_background(bkg_sky1, background0_x + 2048, background0_y);
+        draw_background(bkg_sky2, background0_x + 4096, background0_y);
+        draw_set_alpha(alphaLevel);
+        draw_background(bkg_sky_black0, background0_x, background0_y);
+        draw_background(bkg_sky_black1, background0_x + 2048, background0_y);
+        draw_background(bkg_sky_black2, background0_x + 4096, background0_y);
+        draw_set_alpha(1);
+        draw_background(bkg_mountain0, background0_x, background1_y);
+        draw_background(bkg_mountain1, background0_x + 2048, background1_y);
+        draw_background(bkg_mountain2, background0_x + 4096, background1_y);
+        draw_set_alpha(alphaLevel);
+        draw_background(bkg_mountain0_black, background0_x, background1_y);
+        draw_background(bkg_mountain1_black, background0_x + 2048, background1_y);
+        draw_background(bkg_mountain2_black, background0_x + 4096, background1_y);
+        draw_set_alpha(1);
+        draw_background(bkg_mountain_front0, background0_x, background2_y);
+        draw_background(bkg_mountain_front1, background0_x + 2048, background2_y);
+        draw_background(bkg_mountain_front2, background0_x + 4096, background2_y);
+        draw_set_alpha(alphaLevel);
+        draw_background(bkg_mountain_front0_black, background0_x, background2_y);
+        draw_background(bkg_mountain_front1_black, background0_x + 2048, background2_y);
+        draw_background(bkg_mountain_front2_black, background0_x + 4096, background2_y);
+        draw_set_alpha(1);
+        break;
+    case "forest":
+        background0_x = view_xview / 2;
+        background0_y = view_yview;
+        background1_x = view_xview / 4;
+        background1_y = view_yview / 2 + 128;
+        background2_x = view_xview / 8;
+        background2_y = view_yview / 4 + 128;
+        background3_x = view_xview / 16;
+        background3_y = view_yview / 8 + 128;
+        
+        draw_background(bkg_forest1_1, background0_x, background0_y);
+        draw_background(bkg_forest1_2, background0_x + 2048, background0_y);
+        draw_background(bkg_forest1_3, background0_x + 4096, background0_y);
+        draw_set_alpha(alphaLevel);
+        draw_background(bkg_forest1_black1, background0_x, background0_y);
+        draw_background(bkg_forest1_black2, background0_x + 2048, background0_y);
+        draw_background(bkg_forest1_black3, background0_x + 4096, background0_y);
+        draw_set_alpha(1);
+        draw_background(bkg_forest2_1, background1_x, background1_y);
+        draw_background(bkg_forest2_2, background1_x + 2048, background1_y);
+        draw_background(bkg_forest2_3, background1_x + 4096, background1_y);
+        draw_set_alpha(alphaLevel);
+        draw_background(bkg_forest2_black1, background1_x, background1_y);
+        draw_background(bkg_forest2_black2, background1_x + 2048, background1_y);
+        draw_background(bkg_forest2_black3, background1_x + 4096, background1_y);
+        draw_set_alpha(1);
+        draw_background(bkg_forest3_1, background2_x, background2_y);
+        draw_background(bkg_forest3_2, background2_x + 2048, background2_y);
+        draw_background(bkg_forest3_3, background2_x + 4096, background2_y);
+        draw_set_alpha(alphaLevel);
+        draw_background(bkg_forest3_black1, background2_x, background2_y);
+        draw_background(bkg_forest3_black2, background2_x + 2048, background2_y);
+        draw_background(bkg_forest3_black3, background2_x + 4096, background2_y);
+        draw_set_alpha(1);
+        draw_background(bkg_forest4_1, background3_x, background3_y);
+        draw_background(bkg_forest4_2, background3_x + 2048, background3_y);
+        draw_background(bkg_forest4_3, background3_x + 4096, background3_y);
+        draw_set_alpha(alphaLevel);
+        draw_background(bkg_forest4_black1, background3_x, background3_y);
+        draw_background(bkg_forest4_black2, background3_x + 2048, background3_y);
+        draw_background(bkg_forest4_black3, background3_x + 4096, background3_y);
+        draw_set_alpha(1);
+        break;
+}
 </string>
           </argument>
         </arguments>
